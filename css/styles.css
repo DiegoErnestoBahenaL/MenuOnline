@@ -34,7 +34,7 @@ body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;
     height: 100%;
-    background-image: linear-gradient(to top, var(--naranja) 0%, var(--blanco) 100% ); 
+    background-image: linear-gradient(to top, var(--azul) 0%, var(--blanco) 100% ); 
     background-attachment: fixed;
     
 }
@@ -85,7 +85,7 @@ h1, h2, h3 {
 
 .formulario {
     margin: 10rem 0;
-    background-color: var(--rajah);
+    background-color: var(--naranja);
     width: min(30rem, 100%);
     margin: 0 auto;
     padding: 2rem;
