@@ -136,7 +136,7 @@ h1, h2, h3 {
 
 .inputs__enviar {
  
-    background-color: var(--blanco);
+    background-color: var(--bright-sun);
     color: var(--negro);
     padding: 1rem 3rem;
     margin-top: 1rem;
