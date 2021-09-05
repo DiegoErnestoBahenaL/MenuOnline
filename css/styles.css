@@ -21,6 +21,8 @@
 html {
     font-size: 62.5%;
     box-sizing:  border-box;
+    height: 100%;
+    
 }
 
 *, *:before, *:after{           /* el asterisco selecciona todos los elementos del html  la coma es para una clase repetida en cuanto a contenido*/
@@ -31,18 +33,20 @@ html {
 body {
     font-size: 16px;
     font-family: 'Krub', sans-serif;
-    /*background-image: linear-gradient(to top, var(--azul) 0%, var(--blanco) 100% ); */
-    background-repeat: no-repeat;
+    height: 100%;
+    background-image: linear-gradient(to top, var(--sun) 0%, var(--blanco) 100% ); 
+    background-attachment: fixed;
+    
 }
 h1 {
     font-size: 3.8rem;
 }
 
 h2 {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
 }
 h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 h1, h2, h3 {
@@ -50,12 +54,101 @@ h1, h2, h3 {
 }
 
 .footer{
-    margin-top: 10rem;
+    margin-top: 5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
 }
+
+/* Encabezado */
+.encabezado {
+
+    color: var(--naranja);
+    font-weight: bolder;
+
+}
+/* Logo del Restaurante */
+
+.logoRestaurante__imagen {
+    padding: 1.5rem;
+    max-width: 100%;
+    height: 80%;
+  
+    
+}
+.logoRestaurante__texto {
+
+    margin-bottom: 5rem;
+}
+
+/* Formulario */
 
 .formulario {
-    margin: 15rem 0;
-    display: grid;
+    margin: 10rem 0;
+    background-color: var(--spicy-mix);
+    width: min(30rem, 100%);
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0px 2px 43px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 43px 4px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 43px 4px rgba(0,0,0,0.75);
+
+   
+}
+.formulario fieldset{
+
+    border: none;
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+   
+    color: var(--primario);
 }
 
+.inputs__campos {
+    margin-bottom: 1rem;
+  
+}
+
+.inputs__campo label {
+
+    color: var(--negro);
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;   /* con esto cada campo toma todo el espacio posible */
+}
+
+.inputs__campo {
+
+    width: 100%;
+    border: none;
+    padding: 0.5rem;
+    display: block;
+    border-radius: 0.5rem;
+   
+}
+
+.inputs__enviar {
+ 
+    background-color: var(--blanco);
+    color: var(--negro);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration:  none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: .5rem;           /* hace las esquinas curvas */
+
+    width: 100%;
+    text-align: center;
+    
+}
 
