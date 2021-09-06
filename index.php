@@ -40,7 +40,11 @@
     </header>
     <section class="logoRestaurante">
 
-        <img class="logoRestaurante__imagen" src="img/cheescake.png" alt="Logo">
+        <?php
+            $nombreRestaurante = $_GET["restaurante"];
+            print "<img class="."logoRestaurante__imagen"." src="."img/".$nombreRestaurante.".png"." alt="."Logo"." >";
+        ?>
+        
         <div class="logoRestaurante__texto"> 
             <h2>¡Te damos la Bienvenida!</h2>
         </div>
