@@ -41,8 +41,19 @@
     <section class="logoRestaurante">
 
         <?php
-            $nombreRestaurante = $_GET["restaurante"];
-            print "<img class="."logoRestaurante__imagen"." src="."img/".$nombreRestaurante.".png"." alt="."Logo"." >";
+            error_reporting(E_ERROR | E_PARSE);
+            $nombreRestaurante = $_GET['restaurante'];
+            
+            if (isset($_GET['restaurante']))
+            {
+                print "<img class="."logoRestaurante__imagen"." src="."img/".$nombreRestaurante.".png"." alt="."Logo"." >";
+
+            }
+            else 
+            {
+                print "<img class="."logoRestaurante__imagen"." src="."img/DaltysLogo.png"." alt="."Logo"." >";
+
+            }
         ?>
         
         <div class="logoRestaurante__texto"> 
@@ -53,27 +64,31 @@
 
     </section>
 
-    <form class="formulario" action="" >
-        <fieldset>
-            <legend> Ingresa tu información</legend>
-            <div class="inputs">
-                <div class="inputs__campo">
-                    <label>Nombre</label>
-                    <input class="inputs__campo"  type="text" >
-                </div>
-                <div class="inputs__campo">
-                    <label>Numero de Mesa</label>
-                    <input class="inputs__campo" type="number" >
-                </div>
-                <div >
-                    <input class="inputs__enviar" type="submit" placeholder="Enviar">
-                </div>
+    <form action="list.php" method="POST">
+       
+        <div class="formulario">
 
-            
-            </div>
-            
-        </fieldset>
         
+            <fieldset>
+                <legend> Ingresa tu información</legend>
+                <div class="inputs">
+                    <div class="inputs__campo">
+                        <label>Nombre</label>
+                        <input class="inputs__campo"  type="text" required >
+                    </div>
+                    <div class="inputs__campo">
+                        <label>Numero de Mesa</label>
+                        <input class="inputs__campo" type="number" required>
+                    </div>
+                    <div >
+                        <input class="inputs__enviar" type="submit" placeholder="Enviar">
+                    </div>
+
+                
+                </div>
+                
+            </fieldset>
+        </div>
 
     </form>
 
