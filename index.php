@@ -25,6 +25,9 @@
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- Jquery -->
+
+    <script src="jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -64,7 +67,7 @@
 
     </section>
 
-    <form action="list.php" method="POST">
+    <form id="formAJAX"  method="POST">
        
         <div class="formulario">
 
@@ -74,14 +77,15 @@
                 <div class="inputs">
                     <div class="inputs__campo">
                         <label>Nombre</label>
-                        <input class="inputs__campo"  type="text" required >
+                        <input id="nombre" name="nombre" class="inputs__campo"  type="text" required >
                     </div>
                     <div class="inputs__campo">
                         <label>Numero de Mesa</label>
-                        <input class="inputs__campo" type="number" required>
+                        <input id="mesa" name="mesa" class="inputs__campo" type="number" required>
                     </div>
                     <div >
-                        <input class="inputs__enviar" type="submit" placeholder="Enviar">
+                    <input id="botonEnviar" class="inputs__enviar" id="botonEnviar" type="submit" placeholder="Enviar">
+                       <!--<button id="botonEnviar" class="inputs__enviar">Enviar</button> -->
                     </div>
 
                 
@@ -102,3 +106,32 @@
     
 </body>
 </html>
+<script>
+
+    $(document).ready(function(){
+
+        $('#botonEnviar').click(function (){
+            var datos =$('#formAJAX').serialize();
+          
+            $.ajax ({
+               
+                type: "POST",
+                url: "insertar.php",
+                data: datos,
+                success: function(r){
+                    if (r==1){
+                        location.href = 'list.php';
+                    }
+                    else{
+                        alert ("fallo el servidor");
+                    }
+                }
+            });
+            return false;
+        });
+
+    });
+
+
+
+</script>
