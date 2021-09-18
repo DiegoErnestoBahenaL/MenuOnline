@@ -29,8 +29,8 @@
 <body class="menu">
     <h1>Productos</h1>
         <?php
-            include '../apiLogin/loginMenu.php';
-            $connect = connectDB();
+            include '../apiLogin/daltysConexion.php';
+            $connect = connectDaltys();
         ?>
 
 </body>

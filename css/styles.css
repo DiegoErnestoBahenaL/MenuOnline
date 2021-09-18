@@ -65,7 +65,8 @@ p {
 }
 
 .footer{
-    margin-top: 3rem;
+    position: absolute;
+    bottom: 0;
     font-size: 2rem;
     font-weight: bold;
     text-align: center;

@@ -46,10 +46,26 @@
         <?php
             error_reporting(E_ERROR | E_PARSE);
             $nombreRestaurante = $_GET['restaurante'];
-            
+        
             if (isset($_GET['restaurante']))
-            {
-                print "<img class="."logoRestaurante__imagen"." src="."img/".$nombreRestaurante.".png"." alt="."Logo"." >";
+            { 
+                $restaurante = $_GET['restaurante'];
+                
+                include ("../apiLogin/daltysConexion.php");
+                $conn = connectDaltys();
+            
+            
+                $query = "select imagen from Restaurante where idRestaurante=$restaurante";
+               
+
+                $resultado = mysqli_query($conn, $query) or die ("Algo fallo");
+
+                while ($fila=mysqli_fetch_array($resultado)){
+                 
+                    $imagen = $fila['imagen'];
+                }
+
+                print '<img class="logoRestaurante__imagen" src="data:image/jpeg;base64,'. base64_encode($imagen) .'"/>'; 
 
             }
             else 
@@ -67,7 +83,7 @@
 
     </section>
 
-    <form id="formAJAX"  method="POST">
+    <form id="formAJAX" action="list.php"  method="POST">
        
         <div class="formulario">
 
