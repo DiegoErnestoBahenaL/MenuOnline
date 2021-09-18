@@ -1,6 +1,6 @@
 <?php
 
- $servername = "localhost";
+$servername = "localhost";
 $database = "u696248240_tibeApp";
 $username = "u696248240_adminTibe";
 $password = "!#remNu8";
@@ -12,7 +12,9 @@ if (!$conn) {
 }
 
     $nombre = $_POST['nombre'];
-
-    $sql = "insert into cliente (id, nombre) values ( NULL, '$nombre')";
+    if (!($nombre === null)){
+          $sql = "insert into cliente (id, nombre) values ( NULL, '$nombre')";
     echo mysqli_query($conn, $sql);
+    }
+  
 ?>

@@ -27,7 +27,7 @@
 
     <!-- Jquery -->
 
-    <script src="jquery-3.6.0.min.js"></script>
+    <script src="JS/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -84,9 +84,9 @@
                         <input id="mesa" name="mesa" class="inputs__campo" type="number" required>
                     </div>
                     <div >
-                    <input id="botonEnviar" class="inputs__enviar" id="botonEnviar" type="submit" placeholder="Enviar">
-                       <!--<button id="botonEnviar" class="inputs__enviar">Enviar</button> -->
-                    </div>
+
+                        <input type="submit" class="inputs__enviar" placehoder="Enviar">
+                     </div>
 
                 
                 </div>
@@ -107,31 +107,6 @@
 </body>
 </html>
 <script>
-
-    $(document).ready(function(){
-
-        $('#botonEnviar').click(function (){
-            var datos =$('#formAJAX').serialize();
-          
-            $.ajax ({
-               
-                type: "POST",
-                url: "insertar.php",
-                data: datos,
-                success: function(r){
-                    if (r==1){
-                        location.href = 'list.php';
-                    }
-                    else{
-                        alert ("fallo el servidor");
-                    }
-                }
-            });
-            return false;
-        });
-
-    });
-
 
 
 </script>
