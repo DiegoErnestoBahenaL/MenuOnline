@@ -18,6 +18,13 @@
 
 }
 
+
+html, body {
+    height: 100%;
+       margin: 0px;
+    padding: 0px;
+}
+
 html {
     font-size: 62.5%;
     box-sizing:  border-box;
@@ -64,12 +71,30 @@ p {
     color: var(--crema);
 }
 
-.footer{
+.wrapper {
+
+    
+    min-height: calc(100% - 8rem);
+    position: relative;
+}
+.contenido{
+
+    padding-bottom: 1rem;
+}
+footer{
     position: absolute;
     bottom: 0;
+    height: 2rem;
+   left: 0;
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
+   width: 100%;
+   
+    
+}
+.container {
+    padding:12px;
 }
 
 /* Encabezado */
