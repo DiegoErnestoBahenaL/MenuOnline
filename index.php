@@ -55,12 +55,12 @@
                 if (isset($_GET['restaurante']))
                 { 
                     $restaurante = $_GET['restaurante'];
-                    
+                    global $nombre;
                     include ("../apiLogin/daltysConexion.php");
                     $conn = connectDaltys();
                 
                 
-                    $query = "select imagen from Restaurante where idRestaurante=$restaurante";
+                    $query = "select imagen, nombreRestaurante from Restaurante where idRestaurante=$restaurante";
                 
 
                     $resultado = mysqli_query($conn, $query) or die ("Algo fallo");
@@ -68,28 +68,25 @@
                     while ($fila=mysqli_fetch_array($resultado)){
                     
                         $imagen = $fila['imagen'];
+                        $nombre = $fila['nombreRestaurante'];
                     }
 
                     print '<img class="logoRestaurante__imagen" src="data:image/jpeg;base64,'. base64_encode($imagen) .'"/>'; 
+                    mysqli_close($conn);
 
-                }
-                else 
-                {
-                    print "<img class="."logoRestaurante__imagen"." src="."img/DaltysLogo.png"." alt="."Logo"." >";
+                    
+               
+                
+            print '<div class="logoRestaurante__texto">'; 
+            print   '<h2>¡Te damos la Bienvenida!</h2>';
+            print  '</div>';
+            
 
-                }
+
+            print '</section>';
+          
+                print  '<form id="formAJAX" action="list.php"  method="POST">';
             ?>
-            
-            <div class="logoRestaurante__texto"> 
-                <h2>¡Te damos la Bienvenida!</h2>
-            </div>
-            
-
-
-            </section>
-
-            <form id="formAJAX" action="list.php"  method="POST">
-            
                 <div class="formulario">
 
                 
@@ -105,7 +102,10 @@
                                 <input id="mesa" name="mesa" class="inputs__campo" type="number" required>
                             </div>
                             <div >
-
+                                <?php
+                                    print  '<input type="hidden" name="restaurante" value="'.$nombre.'" >';
+                                ?>
+                                 
                                 <input type="submit" class="inputs__enviar" placehoder="Enviar">
                             </div>
 
@@ -117,6 +117,16 @@
 
             </form>
         </div>
+               
+               
+               
+               <?php } else 
+                {
+                    print "<img class="."logoRestaurante__imagen"." src="."img/DaltysLogo.png"." alt="."Logo"." >";
+
+                }
+            ?>
+           
         <footer>
 
             <div class="container">

@@ -29,8 +29,11 @@
 <body class="menu">
     <h1>Productos</h1>
         <?php
-            include '../apiLogin/daltysConexion.php';
-            $connect = connectDaltys();
+            include '../apiLogin/conexionBDRest.php';
+         
+            $nombreRestaurante = $_POST['restaurante'];
+            $connect = conexionRestaurante($nombreRestaurante);
+ 
         ?>
 
 </body>
