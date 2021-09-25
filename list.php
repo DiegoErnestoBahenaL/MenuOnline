@@ -29,11 +29,10 @@
 <body class="menu">
     <h1>Productos</h1>
         <?php
-            include '../apiLogin/conexionBDRest.php';
+             include '../apiLogin/conexionBDRest.php';
          
             $nombreRestaurante = $_POST['restaurante'];
             $connect = conexionRestaurante($nombreRestaurante);
- 
         ?>
 
 </body>
