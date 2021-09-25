@@ -1,22 +1,54 @@
 <?php
     header("Content-Type: application/json");
     include_once ("../classes/ClassComensal.php");
+    include_once ("../classes/ClassConexion.php");
 
     switch ($_SERVER['REQUEST_METHOD']){
 
         case 'POST':
-            echo ("Un comensal nuevo se registra: ");
+            
+            //Un comensal nuevo ingresa al restaurante
+            $_POST = json_decode (file_get_contents('php://input'), true);
+            $comensal = new Comensal ($_POST['nombre'], $_POST['idMesa']);
+            $conexion = new Conexion ($_POST['restaurante']);
+            $comensal->insertarComensal($conexion);
+
+            $res ["mensaje"] = "Comensal insertado: ".json_encode($_POST);
+            echo json_encode($res);
+
+
             break;
         
         case 'GET':
+            //
+            if (isset($_GET['idComensal'])){
+                
+                echo ("Informacion del comensal: ");
+                $conexion = new Conexion ($_GET['restaurante']);
+                Comensal::mostrarComensal($_GET['idComensal'], $conexion);
             
-            echo ("Informacion del comensal: ");
+            }
+            //Obtiene todos los usuarios en una mesa activos
+            if (isset($_GET['idMesa'])){
 
+                echo ("Comensales en la mesa: ");
+                $conexion = new Conexion ($_GET['restaurante']);
+                Comensal::comensalesEnMesa($_GET['idMesa'], $conexion);
+
+            }
+            
             break;
         
         case 'PUT':
-
-            echo ("El comensal ha terminado de pagar todo: ");
+            //El comensal terminó de pagar todo
+            if (isset($_GET['idComensal'])){
+                
+               
+                $conexion = new Conexion ($_GET['restaurante']);
+                Comensal::actualizarEstadoComensal($_GET['idComensal'], $conexion);
+            
+            }
+            
 
         break;    
     }
