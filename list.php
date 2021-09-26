@@ -31,8 +31,10 @@
         <?php
              include '../apiLogin/conexionBDRest.php';
          
-            $nombreRestaurante = $_POST['restaurante'];
+            $nombreRestaurante = $_GET['restaurante'];
             $connect = conexionRestaurante($nombreRestaurante);
+            
+            mysqli_close($connect);
         ?>
 
 </body>

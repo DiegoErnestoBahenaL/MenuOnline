@@ -27,7 +27,7 @@
 
     <!-- Jquery -->
 
-    <script src="JS/jquery-3.6.0.min.js"></script>
+    
 
 </head>
 
@@ -76,17 +76,17 @@
 
                     
                
-                
-            print '<div class="logoRestaurante__texto">'; 
-            print   '<h2>¡Te damos la Bienvenida!</h2>';
-            print  '</div>';
+                ?>    
+            <div class="logoRestaurante__texto">
+                <h2>¡Te damos la Bienvenida!</h2>
+            </div>
             
 
 
-            print '</section>';
+            </section>
           
-                print  '<form id="formAJAX" action="list.php"  method="POST">';
-            ?>
+             <div id="formAJAX">
+            
                 <div class="formulario">
 
                 
@@ -95,18 +95,18 @@
                         <div class="inputs">
                             <div class="inputs__campo">
                                 <label>Nombre</label>
-                                <input id="nombre" name="nombre" class="inputs__campo"  type="text" required >
+                                <input id="nombre" class="inputs__campo"  type="text" required >
                             </div>
                             <div class="inputs__campo">
                                 <label>Numero de Mesa</label>
-                                <input id="mesa" name="mesa" class="inputs__campo" type="number" required>
+                                <input id="idMesa" class="inputs__campo" type="number" required>
                             </div>
                             <div >
                                 <?php
-                                    print  '<input type="hidden" name="restaurante" value="'.$nombre.'" >';
+                                    print  '<input type="hidden" id="restaurante" name="restaurante" value="'.$nombre.'" >';
                                 ?>
                                  
-                                <input type="submit" class="inputs__enviar" placehoder="Enviar">
+                            <button id="btn-enviar" type="button" onclick="enviar()" class="inputs__enviar">Enviar</button>
                             </div>
 
                         
@@ -115,8 +115,11 @@
                     </fieldset>
                 </div>
 
-            </form>
+            </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="JS/controllerComensal.js"></script>
+
                
                
                
