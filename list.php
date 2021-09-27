@@ -28,14 +28,19 @@
 </head>
 <body class="menu">
     <h1>Productos</h1>
-        <?php
-             include '../apiLogin/conexionBDRest.php';
+      <?php
+          
          
             $nombreRestaurante = $_GET['restaurante'];
-            $connect = conexionRestaurante($nombreRestaurante);
-            
-            mysqli_close($connect);
+        
+            print  '<input type="hidden" id="restaurante" value="'.$nombreRestaurante.'" >';
+                               
+                                 
         ?>
+      
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script src="JS/controllerCategorias.js"></script>
 
 </body>
 </html>
