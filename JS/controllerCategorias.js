@@ -1,14 +1,15 @@
-const url = 'https://daltysfood.com/menu_online/backend/api/categoriadeproductos.php';
+const urlProductos = 'https://daltysfood.com/menu_online/backend/api/categoriadeproductos.php';
 var categorias = [];
 var catergoriaSeleccionada;
 var restaurante = document.getElementById('restaurante').value;
 var myParent = document.body;
+
 function obtenerCategorias (){
 
     axios ({
 
         method: 'get',
-        url: url + `?restaurante=${restaurante}`,
+        url: urlProductos + `?restaurante=${restaurante}`,
         responseType: 'json', 
 
     })
@@ -34,7 +35,12 @@ function crearSeleccionCategorias (){
     selectCategorias.id = "categoriaDeProducto";
     selectCategorias.className = "selectorCategoria";
     myParent.appendChild(selectCategorias);
-    
+
+    var option = document.createElement("option");
+    option.text = "Categorías";
+    option.selected = true;
+    option.disabled = true;
+    selectCategorias.appendChild(option);
     //Create and append the options
     for (var i = 0; i < categorias.length; i++) {
         var option = document.createElement("option");

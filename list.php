@@ -42,5 +42,7 @@
 
         <script src="JS/controllerCategorias.js"></script>
 
+        <script src="JS/controllerProductos.js"></script>
+
 </body>
 </html>
