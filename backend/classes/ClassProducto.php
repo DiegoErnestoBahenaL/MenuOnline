@@ -50,6 +50,35 @@
             $jsonContent = json_encode ($productos);
             echo $jsonContent;
         }
+        public static function obtenerProductosPorCategoria($objConexion, $idCategoriaDeProducto){
+                
+
+                $conexion = $objConexion->conexionRestaurante();
+    
+                $query = "select idProducto, nombre, precio, descripcion, imagen from producto WHERE estaActivo = 1 and idCategoriaDeProducto = $idCategoriaDeProducto";
+                
+                $res = mysqli_query($conexion, $query); 
+                
+                
+                while ($row = $res->fetch_array()){
+
+                        $productos [] = array (
+
+                        'idProducto'=>$row['idProducto'],
+                        'nombre'=>$row['nombre'],
+                        'precio'=>$row['precio'],
+                        'descripcion'=>$row['descripcion'],
+                        'imagen'=> base64_encode($row['imagen'])
+                
+                
+                        );
+
+
+                }
+            $jsonContent = json_encode ($productos);
+            echo $jsonContent;
+
+        }
 
 
         /**

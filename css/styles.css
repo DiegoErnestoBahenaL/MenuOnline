@@ -203,9 +203,23 @@ footer{
 }
 .productoImagen{
     
-    width: 15rem;
-    height: 15rem;
-    margin: 0 auto;
-    display: block;
+    width: 11rem;
+    height: 11rem;
+    margin: 1rem auto;
+    display: flex;
     border-radius: 2rem;
+}
+.productos{
+    background-color: var(--blanco);
+    margin: 1rem auto;
+    border-radius: 1rem;
+    max-width: 90%;
+    padding: 2rem;
+}
+.productoNombre,
+.productoDescripcion,
+.productoPrecio{
+
+    color: var(--negro);
+
 }

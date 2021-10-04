@@ -38,11 +38,30 @@
                                  
         ?>
       
+
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <script src="JS/controllerCategorias.js"></script>
-
-        <script src="JS/controllerProductos.js"></script>
+        
+        
+        <div class="componenteSelector">
+            
+             <script src="JS/controllerCategorias.js" ></script>
+            
+        </div>
+        
+        
+        <div class="listaProductos">
+            <script src="JS/controllerProductos.js" ></script>
+        </div>
+        
+     
+        
+          
+        
+        
 
 </body>
+
+
 </html>

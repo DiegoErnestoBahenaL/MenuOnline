@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,6 +69,7 @@
                     
                         $imagen = $fila['imagen'];
                         $nombre = $fila['nombreRestaurante'];
+                     
                     }
 
                     print '<img class="logoRestaurante__imagen" src="data:image/jpeg;base64,'. base64_encode($imagen) .'"/>'; 

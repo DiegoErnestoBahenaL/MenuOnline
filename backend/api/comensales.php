@@ -23,7 +23,7 @@
             //
             if (isset($_GET['idComensal'])){
                 
-                echo ("Informacion del comensal: ");
+                 
                 $conexion = new Conexion ($_GET['restaurante']);
                 Comensal::mostrarComensal($_GET['idComensal'], $conexion);
             
@@ -31,7 +31,7 @@
             //Obtiene todos los usuarios en una mesa activos
             if (isset($_GET['idMesa'])){
 
-                echo ("Comensales en la mesa: ");
+                 
                 $conexion = new Conexion ($_GET['restaurante']);
                 Comensal::comensalesEnMesa($_GET['idMesa'], $conexion);
 

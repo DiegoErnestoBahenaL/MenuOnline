@@ -1,35 +1,101 @@
-const url = 'https://daltysfood.com/menu_online/backend/api/productos.php';
-var productos = [];
+const urlCategoriaProductos = 'https://daltysfood.com/menu_online/backend/api/categoriadeproductos.php';
+const urlProductos = 'https://daltysfood.com/menu_online/backend/api/productos.php';
+
+
+
+
+var categorias = [];
+var productosPorCategoria = [];
+var catergoriaSeleccionada;
 var restaurante = document.getElementById('restaurante').value;
 var myParent = document.body;
 
 
-function obtenerProductos(){
+
+function obtenerCategorias (){
 
     axios ({
+
         method: 'get',
-        url: url +`?restaurante=${restaurante}`,
-        responseType: 'json'
+        url: urlCategoriaProductos + `?restaurante=${restaurante}`,
+        responseType: 'json' 
+
     })
     .then (res=>{
+
         console.log(res.data);
-        this.productos = res.data;
-        crearListaDeProductos();
+        this.categorias = res.data;
+        crearSeleccionCategorias();
 
     })
     .catch (error=>{
         console.error(error);
-
     });
+
+}
+ obtenerCategorias();
+
+
+function obtenerProductosPorCategoria(idCategoriaDeProducto){
+   
+   if (idCategoriaDeProducto == 0){
+   
+     axios({
+        method: 'get',
+        url: urlProductos + `?restaurante=${restaurante}`,
+        responseType: 'json'
+
+    })
+    .then (res =>{
+        console.log(res.data);
+        this.productosPorCategoria = res.data;
+        crearListaDeProductosPorCategoria();
+    })
+    .catch (error=>{
+        console.error(error);
+    })
+   
+   }
+   else{
+        axios({
+        method: 'get',
+        url: urlProductos + `?restaurante=${restaurante}&idCategoriaDeProducto=${idCategoriaDeProducto}`,
+        responseType: 'json'
+
+    })
+    .then (res =>{
+        console.log(res.data);
+        this.productosPorCategoria = res.data;
+        crearListaDeProductosPorCategoria();
+    })
+    .catch (error=>{
+        console.error(error);
+    })
+   }
+   
+   
 }
 
-obtenerProductos();
 
 
-function crearListaDeProductos(){
 
+
+function crearListaDeProductosPorCategoria(){
+    
+
+     var reactListDivs = document.querySelectorAll('.productos');
+
+    if (reactListDivs) {
+        reactListDivs.forEach(function(reactListDiv) {
+             reactListDiv.remove();
+        });
+    }
+
+    
    
-    for (let i = 0; i < array.length; i++) {
+    
+
+    for (let i = 0; i < productosPorCategoria.length; i++) {
 
         var divProducto = document.createElement("div");
         divProducto.className = "productos";
@@ -37,21 +103,27 @@ function crearListaDeProductos(){
 
         var nombreProducto = document.createElement("p");
         nombreProducto.className = "productoNombre";
-        nombreProducto.textContent = productos[i].nombre;
-
+        nombreProducto.textContent = productosPorCategoria[i].nombre;
+        divProducto.appendChild(nombreProducto);
+        
         var descripcionProducto = document.createElement("p");
         descripcionProducto.className = "productoDescripcion";
-        descripcionProducto.textContent = productos[i].descripcion;
+        descripcionProducto.textContent = productosPorCategoria[i].descripcion;
+        divProducto.appendChild(descripcionProducto);
 
         var precioProducto = document.createElement("p");
         precioProducto.className = "productoPrecio";
-        precioProducto.textContent = productos[i].precio;
-
+        precioProducto.textContent = productosPorCategoria[i].precio;
+        divProducto.appendChild(precioProducto);
 
         var imagenProducto = document.createElement("img");
         imagenProducto.className = "productoImagen";
-        imagenProducto.src = "data: image/jpeg;base64," + `${productos[i].imagen}`;
+        imagenProducto.src = "data: image/jpeg;base64," + `${productosPorCategoria[i].imagen}`;
         divProducto.appendChild(imagenProducto);
+
+        var agregarProducto = document.createElement("button");
+        agregarProducto.textContent = "Agregar";
+        divProducto.appendChild(agregarProducto);
         
     }      
         
@@ -60,4 +132,36 @@ function crearListaDeProductos(){
     
    
 
+}
+
+
+
+
+
+
+function crearSeleccionCategorias (){
+    
+    var selectCategorias = document.createElement("select");
+    selectCategorias.id = "categoriaDeProducto";
+    selectCategorias.className = "selectorCategoria";
+    selectCategorias.onchange = function(){obtenerProductosPorCategoria(this.value);};
+
+    myParent.appendChild(selectCategorias);
+
+    var option = document.createElement("option");
+    option.text = "Todos";
+    option.selected = true;
+    option.value = 0;
+    selectCategorias.appendChild(option);
+    //Create and append the options
+    for (var i = 0; i < categorias.length; i++) {
+        var option = document.createElement("option");
+        option.value = categorias[i].idCategoriaDeProducto;
+        option.text = categorias[i].nombre;
+        selectCategorias.appendChild(option);
+    }
+    
+    
+   
+  
 }

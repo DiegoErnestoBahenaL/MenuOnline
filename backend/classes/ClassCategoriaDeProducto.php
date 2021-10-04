@@ -82,6 +82,28 @@
             echo $jsonContent; 
 
         }
+
+        public static function mostrarCategoria ($objConexion, $idCategoriaDeProducto){
+
+            $conexion = $objConexion->conexionRestaurante();
+
+            $query = "select * from categoriadeproducto where idCategoriaDeProducto= $idCategoriaDeProducto";
+
+            $res = mysqli_query ($conexion, $query);
+
+            while ($row = $res->fetch_array()){
+               
+                $categoria = array (
+
+                    'idCategoriaDeProducto'=>$row['idCategoriaDeProducto'],
+                    'nombre'=>$row['nombre']
+
+                );
+
+            }
+            $jsonContent =json_encode($categoria);
+            echo $jsonContent;
+        }
     
     
     }

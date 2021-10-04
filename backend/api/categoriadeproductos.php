@@ -9,9 +9,27 @@
         case 'GET':
         
            
-            $conexion = new Conexion ($_GET['restaurante']);
-            CategoriaDeProducto::mostrarCategorias($conexion);
+            if (isset($_GET['idCategoriaDeProducto'])){
+
+                
+                $conexion = new Conexion ($_GET['restaurante']);
+                CategoriaDeProducto::mostrarCategoria($conexion, $_GET['idCategoriaDeProducto']);
             
+            }
+            
+            if (isset($_GET['restaurante']) &&  !(isset($_GET['idCategoriaDeProducto']))) {
+
+
+                $conexion = new Conexion ($_GET['restaurante']);
+                CategoriaDeProducto::mostrarCategorias($conexion);
+
+
+            }   
+            
+           
+            
+
+
         break;
     }
 
