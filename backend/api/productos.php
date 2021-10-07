@@ -18,7 +18,11 @@
                     Producto::obtenerProductosPorCategoria($conexion, $_GET['idCategoriaDeProducto']);
                     break;
                 }
-            
+                if (isset($_GET['productoBuscado'])){
+                    $conexion = new Conexion($_GET['restaurante']);
+                    Producto::obtenerProductosPorBusqueda($conexion, $_GET['productoBuscado']);
+                    break;
+                }
                 $conexion = new Conexion($_GET['restaurante']);
                 Producto::obtenerProductos($conexion);            
             }

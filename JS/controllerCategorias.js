@@ -10,6 +10,8 @@ var catergoriaSeleccionada;
 var restaurante = document.getElementById('restaurante').value;
 var myParent = document.body;
 
+
+
 function obtenerCategorias (){
 
     axios ({
@@ -22,7 +24,7 @@ function obtenerCategorias (){
     .then (res=>{
 
         console.log(res.data);
-        this.categorias = res.data;
+        categorias = res.data;
         crearSeleccionCategorias();
 
     })
@@ -31,12 +33,31 @@ function obtenerCategorias (){
     });
 
 }
-
-obtenerCategorias();
+ obtenerCategorias();
 
 
 function obtenerProductosPorCategoria(idCategoriaDeProducto){
-    axios({
+   
+   if (idCategoriaDeProducto == 0){
+   
+     axios({
+        method: 'get',
+        url: urlProductos + `?restaurante=${restaurante}`,
+        responseType: 'json'
+
+    })
+    .then (res =>{
+        console.log(res.data);
+        productosPorCategoria = res.data;
+        crearListaDeProductosPorCategoria();
+    })
+    .catch (error=>{
+        console.error(error);
+    })
+   
+   }
+   else{
+        axios({
         method: 'get',
         url: urlProductos + `?restaurante=${restaurante}&idCategoriaDeProducto=${idCategoriaDeProducto}`,
         responseType: 'json'
@@ -44,12 +65,15 @@ function obtenerProductosPorCategoria(idCategoriaDeProducto){
     })
     .then (res =>{
         console.log(res.data);
-        this.productosPorCategoria = res.data;
+        productosPorCategoria = res.data;
         crearListaDeProductosPorCategoria();
     })
     .catch (error=>{
         console.error(error);
     })
+   }
+   
+   
 }
 
 
@@ -58,34 +82,39 @@ function obtenerProductosPorCategoria(idCategoriaDeProducto){
 
 function crearListaDeProductosPorCategoria(){
     
-    var reactListDivs = document.querySelectorAll('.productos');
+
+     var reactListDivs = document.querySelectorAll('.productos');
 
     if (reactListDivs) {
         reactListDivs.forEach(function(reactListDiv) {
              reactListDiv.remove();
         });
     }
+
     
+   
     
 
     for (let i = 0; i < productosPorCategoria.length; i++) {
 
         var divProducto = document.createElement("div");
         divProducto.className = "productos";
-        document.getElementById("listaproductos").appendChild(divProducto);
+        myParent.appendChild(divProducto);
 
         var nombreProducto = document.createElement("p");
         nombreProducto.className = "productoNombre";
         nombreProducto.textContent = productosPorCategoria[i].nombre;
-
+        divProducto.appendChild(nombreProducto);
+        
         var descripcionProducto = document.createElement("p");
         descripcionProducto.className = "productoDescripcion";
         descripcionProducto.textContent = productosPorCategoria[i].descripcion;
+        divProducto.appendChild(descripcionProducto);
 
         var precioProducto = document.createElement("p");
         precioProducto.className = "productoPrecio";
-        precioProducto.textContent = productosPorCategoria[i].precio;
-
+        precioProducto.textContent = "$"+`${productosPorCategoria[i].precio}`;
+        divProducto.appendChild(precioProducto);
 
         var imagenProducto = document.createElement("img");
         imagenProducto.className = "productoImagen";
@@ -120,9 +149,9 @@ function crearSeleccionCategorias (){
     myParent.appendChild(selectCategorias);
 
     var option = document.createElement("option");
-    option.text = "Categorías";
+    option.text = "Todos";
     option.selected = true;
-    option.disabled = true;
+    option.value = 0;
     selectCategorias.appendChild(option);
     //Create and append the options
     for (var i = 0; i < categorias.length; i++) {

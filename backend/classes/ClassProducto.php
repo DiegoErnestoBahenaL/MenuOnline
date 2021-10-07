@@ -79,6 +79,38 @@
             echo $jsonContent;
 
         }
+        
+        
+         public static function obtenerProductosPorBusqueda ($objConexion, $stringDelUsuario){
+
+                $conexion = $objConexion->conexionRestaurante();
+
+                $query = "select idProducto, nombre, precio, descripcion, imagen from producto 
+                where nombre like '%$stringDelUsuario%' or descripcion like '%$stringDelUsuario%'";
+
+                $res = mysqli_query($conexion, $query); 
+                
+                
+                while ($row = $res->fetch_array()){
+
+                        $productos [] = array (
+
+                        'idProducto'=>$row['idProducto'],
+                        'nombre'=>$row['nombre'],
+                        'precio'=>$row['precio'],
+                        'descripcion'=>$row['descripcion'],
+                        'imagen'=> base64_encode($row['imagen'])
+                
+                
+                        );
+
+
+                }
+            $jsonContent = json_encode ($productos);
+            echo $jsonContent;
+
+
+        }
 
 
         /**

@@ -50,18 +50,20 @@
             
         </div>
         
+        <div class="barraBusqueda">
+
+            <input class="barraBusquedaTexto"  type="search" id="barraBusquedaTexto" placeholder="Busca el platillo">
+            <button class="barraBusquedaBoton" id="barraBusquedaBoton">Buscar</button>
+            <script type="module" src="JS/controllerBusqueda.js"></script>
+
+        </div>
+        
         
         <div class="listaProductos">
-            <script src="JS/controllerProductos.js" ></script>
+            <script type="module"  src="JS/controllerProductos.js" ></script>
         </div>
         
      
-        
-          
-        
-        
 
 </body>
-
-
 </html>
