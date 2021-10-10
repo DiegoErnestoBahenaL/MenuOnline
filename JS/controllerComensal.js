@@ -24,7 +24,12 @@ function enviar(){
     })
     .then (res=>{
         console.log(res.data);
-        location.href=`list.php?restaurante=${comensal.restaurante}`;
+        if (res.data.rows == 0){
+            location.href=`list.php?restaurante=${comensal.restaurante}&idComensal=${res.data.idComensal}`;
+        }
+        else{
+            alert ("Ya existe ese nombre registrado en la mesa");
+        }
 
     })
     .catch (error=>{

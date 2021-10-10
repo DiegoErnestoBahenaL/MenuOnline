@@ -1,4 +1,4 @@
-import {url, productos, myParent, crearListaDeProductos} from './controllerProductos.js'
+import {url, productos, myParent, crearListaDeProductos, limpiarProductos} from './controllerProductos.js'
 
 var botonBuscar = document.getElementById("barraBusquedaBoton");
 var productosBuscados = [];
@@ -37,7 +37,8 @@ function buscar(){
                 crearListaDeProductos(productosBuscados);
             }
             else{
-                alert("No se encontró el producto");
+                limpiarProductos();
+                productoNoEncontrado();
             }
         })
         .catch (error=>{
@@ -48,12 +49,18 @@ function buscar(){
 
 }
 
-function limpiarProductos (){
- var reactListDivs = document.querySelectorAll('.productos');
 
-    if (reactListDivs) {
-        reactListDivs.forEach(function(reactListDiv) {
-             reactListDiv.remove();
-        });
-    }
+function productoNoEncontrado (){
+
+    var divProducto = document.createElement("div");
+    divProducto.className = "productos";
+    divProducto.style.backgroundColor = "transparent";
+    myParent.appendChild(divProducto);
+
+    var nombreProducto = document.createElement("p");
+    nombreProducto.className = "productoNombre";
+    nombreProducto.textContent = "No se encontró el producto";
+    nombreProducto.style.textAlign = "center";
+    divProducto.appendChild(nombreProducto);
+        
 }

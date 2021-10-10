@@ -112,14 +112,82 @@
         public function insertarComensal ($objConexion){
 
             
-            $conexion = $objConexion->conexionRestaurante();
+             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "insert into comensal (nombre, idMesa, estaActivo) 
-            values ('$this->nombre', $this->idMesa, $this->estaActivo)";
+            
+            $queryVerificar = "select * from comensal where idMesa=$this->idMesa
+             and estaActivo = 1 and nombre = '$this->nombre' ";
+            
+            
+            $res = mysqli_query($conexion, $queryVerificar );
+            $rows = mysqli_num_rows($res);
+            if (mysqli_num_rows($res) !== 0){
+            
+                
+                 
+                   
+             mysqli_close($conexion);
+    
 
-            $res = mysqli_query($conexion, $query);
 
-            mysqli_close($conexion);
+               $error = array (
+
+                    
+                    'nombre'=>$this->nombre,
+                    'mesa' => $this->idMesa,
+                    'estaActivo'=>$this->estaActivo,
+                    'query'=>$res,
+                    'rows'=>$rows
+                );
+                
+                $jsonContent = json_encode($error);
+                echo $jsonContent; 
+               
+             
+            
+                
+                
+            } 
+            else{ 
+                  $queryInsertar = "insert into comensal (nombre, idMesa, estaActivo) 
+                    values ('$this->nombre', $this->idMesa, $this->estaActivo)";
+    
+                    $res = mysqli_query($conexion, $queryInsertar);
+
+
+                    $queryObtenerIdComensal = "SELECT idComensal FROM comensal ORDER BY idComensal DESC LIMIT 1";
+                    
+                    
+                    $resIdComensal = mysqli_query($conexion, $queryObtenerIdComensal);
+
+
+                    while ($rowID = $resIdComensal->fetch_array()){
+
+                        $idComensal = array (
+        
+                            'idComensal'=>$rowID['idComensal']
+        
+                        );
+                        
+                    }
+
+                    mysqli_close($conexion);
+    
+                    $message = array (
+
+                    
+                    'nombre'=>$this->nombre,
+                    'mesa' => $this->idMesa,
+                    'estaActivo'=>$this->estaActivo,
+                    'query'=>$res,
+                    'rows'=>$rows,
+                    'idComensal'=>$idComensal['idComensal']
+                );
+                
+                    $jsonContent = json_encode($message);
+                    echo $jsonContent;  
+            }
+            
 
         }
 

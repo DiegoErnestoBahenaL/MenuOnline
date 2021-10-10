@@ -13,8 +13,7 @@
             $conexion = new Conexion ($_POST['restaurante']);
             $comensal->insertarComensal($conexion);
 
-            $res ["mensaje"] = "Comensal insertado: ".json_encode($_POST);
-            echo json_encode($res);
+           
 
 
             break;

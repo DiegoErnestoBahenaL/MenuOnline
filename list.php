@@ -32,23 +32,19 @@
           
          
             $nombreRestaurante = $_GET['restaurante'];
-        
+            $idComensal = $_GET['idComensal'];
             print  '<input type="hidden" id="restaurante" value="'.$nombreRestaurante.'" >';
-                               
+            print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';                   
                                  
         ?>
       
-
+        
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         
         
-        <div class="componenteSelector">
-            
-             <script src="JS/controllerCategorias.js" ></script>
-            
-        </div>
+       
         
         <div class="barraBusqueda">
 
@@ -57,12 +53,20 @@
             <script type="module" src="JS/controllerBusqueda.js"></script>
 
         </div>
-        
-        
-        <div class="listaProductos">
-            <script type="module"  src="JS/controllerProductos.js" ></script>
+
+         <div class="componenteSelector" id="componenteSelector">
+            
+             <script type="module" src="JS/controllerCategorias.js" ></script>
+            
         </div>
         
+        <div class="listaProductos" id="listaProductos">
+            <script type="module"  src="JS/controllerProductos.js" ></script>
+             
+           
+
+        </div>
+    
      
 
 </body>
