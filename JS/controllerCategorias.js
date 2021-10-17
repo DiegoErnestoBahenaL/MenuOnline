@@ -46,7 +46,7 @@ function obtenerProductosPorCategoria(idCategoriaDeProducto){
    
      axios({
         method: 'get',
-        url: urlProductos + `?restaurante=${restaurante}`,
+        url: url + `?restaurante=${restaurante}`,
         responseType: 'json'
 
     })

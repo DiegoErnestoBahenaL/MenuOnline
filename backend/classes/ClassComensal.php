@@ -149,7 +149,7 @@
                 
             } 
             else{ 
-                  $queryInsertar = "insert into comensal (nombre, idMesa, estaActivo) 
+                 $queryInsertar = "insert into comensal (nombre, idMesa, estaActivo) 
                     values ('$this->nombre', $this->idMesa, $this->estaActivo)";
     
                     $res = mysqli_query($conexion, $queryInsertar);

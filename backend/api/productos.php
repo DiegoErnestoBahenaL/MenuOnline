@@ -11,7 +11,11 @@
             
             if (isset($_GET['restaurante'])) {
                 
-                
+                if (isset($_GET['idProducto'])){
+                    $conexion = new Conexion ($_GET['restaurante']);
+                    Producto::obtenerProducto($conexion, $_GET['idProducto']);
+                    break;
+                }
                 if (isset($_GET['idCategoriaDeProducto'])){
                     
                     $conexion = new Conexion($_GET['restaurante']);

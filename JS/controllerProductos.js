@@ -4,7 +4,7 @@
 const url = 'https://daltysfood.com/menu_online/backend/api/productos.php';
 var productos = [];
 var restaurante = document.getElementById('restaurante').value;
-
+var idComensal = document.getElementById('idComensal').value;
 var myParent = document.body;
 
 
@@ -72,6 +72,9 @@ obtenerProductos();
 
         var agregarProducto = document.createElement("button");
         agregarProducto.textContent = "Agregar";
+        agregarProducto.id = "botonAgregar";
+        agregarProducto.value = productos[i].idProducto;
+        agregarProducto.onclick = function (){redireccionarAProductoDetallado(this.value);};
         divProducto.appendChild(agregarProducto);
         
     }      
@@ -82,6 +85,14 @@ obtenerProductos();
    
 
 }
+
+function redireccionarAProductoDetallado (idProducto){
+
+    location.href=`productoDetallado.php?restaurante=${restaurante}&idComensal=${idComensal}&idProducto=${idProducto}`;
+
+
+}
+
 
 function limpiarProductos (){
     var reactListDivs = document.querySelectorAll('.productos');

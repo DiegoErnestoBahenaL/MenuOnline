@@ -50,6 +50,43 @@
             $jsonContent = json_encode ($productos);
             echo $jsonContent;
         }
+        
+        public static function obtenerProducto ($objConexion, $idProducto){
+
+                $imagenConvertida;
+
+                $conexion = $objConexion->conexionRestaurante();
+
+                $query = "select idProducto, nombre, precio, descripcion, imagen from producto 
+                WHERE estaActivo = 1 and idProducto = $idProducto ";
+
+                $res = mysqli_query($conexion, $query);
+                
+                while ($row = $res->fetch_array()){
+
+                        $producto  = array (
+        
+                            'idProducto'=>$row['idProducto'],
+                            'nombre'=>$row['nombre'],
+                            'precio'=>$row['precio'],
+                            'descripcion'=>$row['descripcion'],
+                            'imagen'=> base64_encode($row['imagen'])
+                        
+                        
+                        );
+        
+        
+                    }
+                
+                $jsonContent = json_encode ($producto);
+                echo $jsonContent;
+
+        }
+        
+        
+        
+        
+        
         public static function obtenerProductosPorCategoria($objConexion, $idCategoriaDeProducto){
                 
 
@@ -86,7 +123,7 @@
                 $conexion = $objConexion->conexionRestaurante();
 
                 $query = "select idProducto, nombre, precio, descripcion, imagen from producto 
-                where nombre like '%$stringDelUsuario%' or descripcion like '%$stringDelUsuario%'";
+                where nombre like '%$stringDelUsuario%' or descripcion like  '%$stringDelUsuario%'";
 
                 $res = mysqli_query($conexion, $query); 
                 

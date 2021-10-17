@@ -26,15 +26,17 @@
 
 
 </head>
-<body class="menu">
-    <h1>Productos</h1>
+<body class="productoBody">
+  
       <?php
           
          
             $nombreRestaurante = $_GET['restaurante'];
             $idComensal = $_GET['idComensal'];
+            $idProducto = $_GET['idProducto'];
             print  '<input type="hidden" id="restaurante" value="'.$nombreRestaurante.'" >';
-            print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';                   
+            print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';    
+            print '<input type="hidden" id="idProducto" value="'.$idProducto.'" >';                 
                                  
         ?>
       
@@ -44,28 +46,23 @@
 
         
         
-       
-        
-        <div class="barraBusqueda">
+    <div class="subBody">
+            <div class="contenedorProducto" id="contenedorProducto">
 
-            <input class="barraBusquedaTexto"  type="search" id="barraBusquedaTexto" placeholder="Busca el platillo">
-            <button class="barraBusquedaBoton" id="barraBusquedaBoton">Buscar</button>
-            <script type="module" src="JS/controllerBusqueda.js"></script>
+                <script type="module" src="JS/controllerProducto.js"></script>
 
-        </div>
 
-         <div class="componenteSelector" id="componenteSelector">
-            
-             <script type="module" src="JS/controllerCategorias.js" ></script>
-              <button class="pedido" id="pedido">Ir a pedido</button>
-            
-        </div>
-        
-        <div class="listaProductos" id="listaProductos">
-            <script type="module"  src="JS/controllerProductos.js" ></script>
-             
-           
+                
+            </div>
+            <div class="contenedorComentario">
+                 <h3 class="tituloComentario">Comentarios</h3>
+                <textarea placeholder="Escribe comentarios de preparación" rows="4" cols="50" id="comentario" class="comentario"></textarea>
 
+            </div>
+            <div class="areaBotones">
+                <button class="agregarProducto" id="agregarProducto">Agregar</button>
+            </div>
+                
         </div>
     
      
