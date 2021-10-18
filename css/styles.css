@@ -290,5 +290,34 @@ footer{
 .imagenProductoDetallado {
 
     width: 100%;
-   height: 25rem;
+   height: 25rem; 
+  
+}
+.areaBotones {
+
+    display: flex;
+    justify-content: center; 
+    max-width: 80%;
+    align-items: center;
+    gap: 2rem;
+    margin: 0.5rem auto;
+   
+
+}
+.cantidadBotones {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0.5rem;
+}
+.inputCantidadProductos {
+    
+    width: 4rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+.agregarProducto{
+    
+    padding: 0.5rem;
+
 }
