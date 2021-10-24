@@ -20,6 +20,23 @@ var myParent = document.body;
         console.log(res.data);
         productos = res.data;
         crearListaDeProductos(productos);
+        
+        var jsonString = JSON.stringify(productos);
+        
+       
+        
+        if (localStorage.getItem ('informacionProductos') == null){
+            localStorage.setItem('informacionProductos', jsonString);
+        }
+        else{
+            localStorage.clear();
+            localStorage.setItem('informacionProductos', jsonString);
+        }
+        
+        var productoRecuperado = localStorage.getItem('informacionProductos');
+
+        var productoParseado = JSON.parse(productoRecuperado);
+        console.log(productoParseado[1]);
 
     })
     .catch (error=>{

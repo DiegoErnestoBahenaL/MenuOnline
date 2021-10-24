@@ -60,14 +60,14 @@
 
             </div>
             <div class="areaBotones">
-
-                <div class="cantidadBotones" id="cantidadBotones">
+                
+                 <div class="cantidadBotones" id="cantidadBotones">
                     <button type="button" id="botonMenos" onclick="disminuirArticulo()" >-</button>
-                    <input class="inputCantidadProductos" id="inputCantidadProductos" type="number" value="1" size="2" >
-                    <button type="button" id="botonMas" onclick="agregaArticulo()">+</button>
+                    <input class="inputCantidadProductos" id="inputCantidadProductos" type="number" value="1" size="2" disabled >
+                    <button type="button" id="botonMas" onclick="agregarArticulo()">+</button>
                 </div>
-
                 <script src="JS/controllerAgregarProducto.js"></script>
+
 
                 <button class="agregarProducto" id="agregarProducto">Agregar</button>
             </div>
