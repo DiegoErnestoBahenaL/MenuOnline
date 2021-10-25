@@ -69,7 +69,8 @@
                 <script src="JS/controllerAgregarProducto.js"></script>
 
 
-                <button class="agregarProducto" id="agregarProducto">Agregar</button>
+                <button type="button" class="agregarProducto" onclick="guardarEnPedido()" id="agregarProducto">Agregar</button>
+                <script src="JS/controllerGuardarEnPedido.js"></script>
             </div>
                 
         </div>
