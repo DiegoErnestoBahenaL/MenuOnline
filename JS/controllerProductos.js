@@ -21,22 +21,6 @@ var myParent = document.body;
         productos = res.data;
         crearListaDeProductos(productos);
         
-        var jsonString = JSON.stringify(productos);
-        
-       
-        
-        if (localStorage.getItem ('informacionProductos') == null){
-            localStorage.setItem('informacionProductos', jsonString);
-        }
-        else{
-            localStorage.clear();
-            localStorage.setItem('informacionProductos', jsonString);
-        }
-        
-        var productoRecuperado = localStorage.getItem('informacionProductos');
-
-        var productoParseado = JSON.parse(productoRecuperado);
-        console.log(productoParseado[1]);
 
     })
     .catch (error=>{
@@ -91,7 +75,7 @@ obtenerProductos();
         agregarProducto.textContent = "Agregar";
         agregarProducto.id = "botonAgregar";
         agregarProducto.value = productos[i].idProducto;
-        agregarProducto.onclick = function (){redireccionarAProductoDetallado(this.value);};
+        agregarProducto.onclick = function (){redireccionarAProductoDetallado(this.value, productos[i].precio, productos[i].nombre);};
         divProducto.appendChild(agregarProducto);
         
     }      
@@ -103,9 +87,8 @@ obtenerProductos();
 
 }
 
-function redireccionarAProductoDetallado (idProducto){
-
-    location.href=`productoDetallado.php?restaurante=${restaurante}&idComensal=${idComensal}&idProducto=${idProducto}`;
+function redireccionarAProductoDetallado (idProducto, precioProducto, nombreProducto){
+    location.href=`productoDetallado.php?restaurante=${restaurante}&idComensal=${idComensal}&idProducto=${idProducto}&precio=${precioProducto}&nombre=${nombreProducto}`;
 
 
 }

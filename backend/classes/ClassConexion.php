@@ -12,7 +12,7 @@
             $this->servername = "localhost";
             $this->database = "u696248240_".$nombreBD;
             $this->username = "u696248240_".$nombreBD;
-            $this->password = "u696248240_".$nombreBD."Daltys.com";
+            $this->password = "u696248240_".$nombreBD."Daltys.com"; //esta se saca de conuslta
 
         }
 

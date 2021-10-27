@@ -324,3 +324,14 @@ footer{
     padding: 0.5rem;
 
 }
+
+/* Pagina pedido */
+
+.itemsPedidos {
+
+    display: flex;
+    gap: 1rem;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+}

@@ -34,9 +34,13 @@
             $nombreRestaurante = $_GET['restaurante'];
             $idComensal = $_GET['idComensal'];
             $idProducto = $_GET['idProducto'];
+            $nombre = $_GET['nombre']; 
+            $precio = $_GET['precio'];
             print  '<input type="hidden" id="restaurante" value="'.$nombreRestaurante.'" >';
             print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';    
-            print '<input type="hidden" id="idProducto" value="'.$idProducto.'" >';                 
+            print '<input type="hidden" id="idProducto" value="'.$idProducto.'" >';    
+            print '<input type="hidden" id="nombre" value="'.$nombre.'" >';    
+            print '<input type="hidden" id="precio" value="'.$precio.'" >';                
                                  
         ?>
       

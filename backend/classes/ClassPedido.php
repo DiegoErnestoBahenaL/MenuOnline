@@ -27,7 +27,7 @@
             $this->idMesa = $idMesa;
             $this->idMedioDePago = 3;
             $this->montoTotal = 0.00;
-            $this->idEstadoPedido = 6;
+            $this->idEstadoPedido = 1;
             $this->fechaInicio = date( "Y-m-d H:i:s", time () -18000);
 
  

@@ -56,9 +56,12 @@
 
          <div class="componenteSelector" id="componenteSelector">
             
-             <script type="module" src="JS/controllerCategorias.js" ></script>
-              <button class="pedido" id="pedido">Ir a pedido</button>
+            <script type="module" src="JS/controllerCategorias.js" ></script>
             
+            <button type="button" class="pedido" id="pedido" onclick="irAPedido()" >Ir a pedido</button>
+            
+            <script src="JS/controllerIrAPedido.js"></script>
+
         </div>
         
         <div class="listaProductos" id="listaProductos">

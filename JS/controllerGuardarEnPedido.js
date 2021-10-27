@@ -10,12 +10,16 @@ function guardarEnPedido (){
     var idProducto = document.getElementById("idProducto").value;
     var cantidadProducto = document.getElementById("inputCantidadProductos").value;
     var comentario = document.getElementById("comentario").value;
+    var nombre = document.getElementById("nombre").value;
+    var precio = document.getElementById("precio").value;
 
     productoDePedido = {
 
         idProducto: idProducto,
         cantidadProducto: cantidadProducto,
-        comentario: comentario
+        comentario: comentario,
+        nombre: nombre,
+        precio: precio
     }
 
     console.log(restaurante);
