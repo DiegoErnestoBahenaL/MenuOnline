@@ -330,8 +330,18 @@ footer{
 .itemsPedidos {
 
     display: flex;
-    gap: 1rem;
-    margin: 1rem auto;
-    justify-content: center;
+    flex-direction: row;    
+    justify-content: space-between;
     align-items: center;
+    margin: 1rem auto;
+    padding: 0 1.5rem;
+
+}
+
+
+
+.productoPedidoInfo {
+    display: flex;
+    flex-direction: row;    
+    gap: 1rem;
 }
