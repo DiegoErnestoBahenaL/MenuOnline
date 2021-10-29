@@ -344,4 +344,39 @@ footer{
     display: flex;
     flex-direction: row;    
     gap: 1rem;
+    color: var(--cocoa-brown);
+}
+
+.productosPedidos {
+
+    height: 35rem;
+    overflow: scroll;
+    margin: 1rem 0.5rem;
+    background-color: var(--foam);
+    border-radius: 1rem;
+    
+
+}
+
+.pedido {
+    background-color: var(--blanco);
+}
+.productoPedidoNombre,
+.precioProductoPedido,
+.cantidadProductoPedido{
+
+    color: var(--cocoa-brown);
+
+}
+
+.pedidoHeader {
+
+    color: var(--negro);
+}
+.areaBotonesPedido{
+
+    margin: 2rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

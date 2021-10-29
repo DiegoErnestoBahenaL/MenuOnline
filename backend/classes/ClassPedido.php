@@ -37,6 +37,11 @@
 
         public function insertarPedido ($objConexion) {
 
+
+            
+
+
+
              $conexion = $objConexion->conexionRestaurante();
 
              $query = "insert into pedido (fechaInicio, idEstadoPedido, montoTotal, idMedioDePago, idMesa, idComensal) 

@@ -1,9 +1,17 @@
 
 function irAPedido(){
 
-    var restaurante = document.getElementById("restaurante").value;
-    var idComensal = document.getElementById("idComensal").value;
+    if (localStorage.getItem('pedidoDelComensal') == null || localStorage.getItem('pedidoDelComensal') == "[]"){
 
-    location.href = `pedido.php?restaurante=${restaurante}&idComensl=${idComensal}`;
+        alert ("Aún no agregas nada a pedido");
+    }
+    else {
+
+        var restaurante = document.getElementById("restaurante").value;
+        var idComensal = document.getElementById("idComensal").value;
+        var mesa = document.getElementById('mesa').value;
+        location.href = `pedido.php?restaurante=${restaurante}&idComensal=${idComensal}&mesa=${mesa}`;
+    }
+    
 
 }

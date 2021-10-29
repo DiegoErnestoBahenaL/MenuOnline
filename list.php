@@ -33,9 +33,10 @@
          
             $nombreRestaurante = $_GET['restaurante'];
             $idComensal = $_GET['idComensal'];
+            $mesa = $_GET['mesa'];
             print  '<input type="hidden" id="restaurante" value="'.$nombreRestaurante.'" >';
             print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';                   
-                                 
+            print '<input type="hidden" id="mesa" value="'.$mesa.'" >';                           
         ?>
       
         
