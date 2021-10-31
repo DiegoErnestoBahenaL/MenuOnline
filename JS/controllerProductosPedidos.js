@@ -2,6 +2,7 @@
 var productosPedidos = [];
 var restaurante = document.getElementById('restaurante').value;
 var idComensal = document.getElementById('idComensal').value;
+var mesa = document.getElementById('mesa').value;
 
 crearListaProductosPedidos();
 
@@ -14,7 +15,7 @@ function crearListaProductosPedidos(){
     if (productosPedidos.length < 1) {
 
         alert ("No hay ningún artículo en pedido");
-        location.href=`list.php?restaurante=${restaurante}&idComensal=${idComensal}`;
+        location.href=`list.php?restaurante=${restaurante}&idComensal=${idComensal}&mesa=${mesa}`;
     }
     else {
 

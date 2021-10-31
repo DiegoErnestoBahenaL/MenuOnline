@@ -42,7 +42,8 @@
             $conexion = $objConexion->conexionRestaurante();
 
             //Query para verificar los pedidos que haya en esa mesa
-            $queryVerificar = "select * from pedido where idMesa = $this->idMesa and idEstadoPedido!=5";
+            $queryVerificar = "select * from pedido where idMesa = $this->idMesa 
+            and idComensal = $this->idComensal and idEstadoPedido!=5";
 
 
             $resVerificar = mysqli_query($conexion, $queryVerificar);
@@ -51,7 +52,7 @@
 
             if ($rowsConsulta !== 0){
 
-                $queryObtenerPedido = "SELECT numeroDePedido FROM pedido WHERE idMesa = $this->idMesa ORDER BY numeroDePedido DESC LIMIT 1";
+                $queryObtenerPedido = "SELECT numeroDePedido, idEstadoPedido FROM pedido WHERE idMesa = $this->idMesa ORDER BY numeroDePedido DESC LIMIT 1";
 
 
                 $resNumeroDePedido = mysqli_query($conexion, $queryObtenerPedido);
@@ -61,7 +62,8 @@
 
                     $pedido = array (
     
-                        'numeroDePedido'=>$rowPedido['numeroDePedido']
+                        'numeroDePedido'=>$rowPedido['numeroDePedido'],
+                        'idEstadoPedido'=>$rowPedido['idEstadoPedido']
     
                     );
                     
@@ -71,7 +73,8 @@
 
                 $error = array (
                     'message'=>400 ,
-                    "numeroDePedido"=>$pedido['numeroDePedido']
+                    "numeroDePedido"=>$pedido['numeroDePedido'],
+                    'idEstadoPedido'=>$pedido['idEstadoPedido']
                 );
 
                 $jsonContent = json_encode($error);
@@ -108,6 +111,7 @@
 
                 $message = array (
                     "query"=>$res,
+                    "message"=>200,
                     "numeroDePedido"=>$pedido['numeroDePedido'],
                     "fechaInicio"=>$this->fechaInicio,
                     "idEstadoPedido"=>$this->idEstadoPedido,
@@ -125,7 +129,33 @@
             
         }
 
+        public static function actualizarMontoTotal($numeroDePedido, $montoTotal, $objConexion){
 
+            $conexion = $objConexion->conexionRestaurante();
+
+            $query =  "UPDATE pedido set montoTotal = $montoTotal, idEstadoPedido = 1 where numeroDePedido = $numeroDePedido"; 
+
+            $res = mysqli_query($conexion, $query);
+
+            
+
+            if($res){
+                $codigo = 200;
+            }
+            else {
+                $codigo = 500;
+            }
+
+            $message = array (
+
+                'message'=>$codigo
+            );
+
+            $jsonContent = json_encode($message);
+            echo $jsonContent;
+
+            mysqli_close($conexion);
+        }
 
     }
 ?>
