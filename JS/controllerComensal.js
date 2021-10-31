@@ -3,8 +3,7 @@ const url = 'https://daltysfood.com/menu_online/backend/api/comensales.php';
 
 function enviar(){
 
-
-
+    
     let comensal = {
 
         nombre: document.getElementById('nombre').value,

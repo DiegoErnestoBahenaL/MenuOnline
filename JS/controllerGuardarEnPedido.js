@@ -5,6 +5,7 @@ function guardarEnPedido (){
 
     var restaurante = document.getElementById('restaurante').value;
     var idComensal = document.getElementById('idComensal').value;
+    var mesa = document.getElementById('mesa').value;
 
 
     var idProducto = document.getElementById("idProducto").value;
@@ -51,7 +52,7 @@ function guardarEnPedido (){
 
     alert("Producto añadido");
 
-    location.href= `list.php?restaurante=${restaurante}&idComensal=${idComensal}`;
+    location.href= `list.php?restaurante=${restaurante}&idComensal=${idComensal}&mesa=${mesa}`;
 
 
 }

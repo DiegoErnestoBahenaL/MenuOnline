@@ -10,7 +10,7 @@
             
             //Un comensal nuevo ingresa al restaurante
             $_POST = json_decode (file_get_contents('php://input'), true);
-            $pedido = new Pedido ($_POST['idMesa'], $_POST['idComensal']);
+            $pedido = new Pedido ($_POST['idMesa'], $_POST['idComensal'], $_POST['montoTotal']);
             $conexion = new Conexion ($_POST['restaurante']);
             $pedido->insertarPedido($conexion);
 

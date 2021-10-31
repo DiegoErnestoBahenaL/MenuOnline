@@ -5,6 +5,7 @@ const url = 'https://daltysfood.com/menu_online/backend/api/productos.php';
 var productos = [];
 var restaurante = document.getElementById('restaurante').value;
 var idComensal = document.getElementById('idComensal').value;
+var mesa = document.getElementById('mesa').value;
 var myParent = document.body;
 
 
@@ -75,7 +76,7 @@ obtenerProductos();
         agregarProducto.textContent = "Agregar";
         agregarProducto.id = "botonAgregar";
         agregarProducto.value = productos[i].idProducto;
-        agregarProducto.onclick = function (){redireccionarAProductoDetallado(this.value, productos[i].precio, productos[i].nombre);};
+        agregarProducto.onclick = function (){redireccionarAProductoDetallado(this.value, productos[i].precio, productos[i].nombre, mesa);};
         divProducto.appendChild(agregarProducto);
         
     }      
@@ -87,8 +88,8 @@ obtenerProductos();
 
 }
 
-function redireccionarAProductoDetallado (idProducto, precioProducto, nombreProducto){
-    location.href=`productoDetallado.php?restaurante=${restaurante}&idComensal=${idComensal}&idProducto=${idProducto}&precio=${precioProducto}&nombre=${nombreProducto}`;
+function redireccionarAProductoDetallado (idProducto, precioProducto, nombreProducto, mesa){
+    location.href=`productoDetallado.php?restaurante=${restaurante}&idComensal=${idComensal}&idProducto=${idProducto}&precio=${precioProducto}&nombre=${nombreProducto}&mesa=${mesa}`;
 
 
 }
