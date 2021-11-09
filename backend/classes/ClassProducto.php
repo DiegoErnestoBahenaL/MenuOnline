@@ -9,7 +9,10 @@
         private $codigo;
         private $imagen;
         private $idCategoriaDeProducto;
-                       
+        
+         /**
+         * Constructor de la clase Producto
+         */ 
 
         public function __construct($idProducto, $nombre, $precio, $descripcion, $codigo, $imagen, $idCategoriaDeProducto){
 
@@ -22,42 +25,47 @@
             $this->idCategoriaDeProducto = $idCategoriaDeProducto;
         }
 
-
+         /**
+         * Parámetros: Recibe un objeto de la clase conexión con la información del restaurante
+         * Funcionalidad: Usando el objeto de la clase conexion, crea una nueva conexión
+         * con el método conexionRestaurante() para realizar consultas; realiza la consulta
+         * correspondiente y se
+         */ 
         public static function obtenerProductos($objConexion){
                 
-                $imagenConvertida;
-            $conexion = $objConexion->conexionRestaurante();
+                //$imagenConvertida;
+                $conexion = $objConexion->conexionRestaurante();
 
-            $query = "select idProducto, nombre, precio, descripcion, imagen from producto WHERE estaActivo = 1";
+                $query = "select idProducto, nombre, precio, descripcion, imagen from Producto WHERE estaActivo = 1";
             
-            $res = mysqli_query($conexion, $query);
+                $res = mysqli_query($conexion, $query);
 
-            while ($row = $res->fetch_array()){
+                while ($row = $res->fetch_array()){
 
-                $productos [] = array (
+                        $productos [] = array (
 
-                    'idProducto'=>$row['idProducto'],
-                    'nombre'=>$row['nombre'],
-                    'precio'=>$row['precio'],
-                    'descripcion'=>$row['descripcion'],
-                    'imagen'=> base64_encode($row['imagen'])
+                                'idProducto'=>$row['idProducto'],
+                                'nombre'=>$row['nombre'],
+                                'precio'=>$row['precio'],
+                                'descripcion'=>$row['descripcion'],
+                                'imagen'=> $row['imagen']
                 
                 
-                );
+                        );
 
+                }
 
-            }
             $jsonContent = json_encode ($productos);
             echo $jsonContent;
         }
         
         public static function obtenerProducto ($objConexion, $idProducto){
 
-                $imagenConvertida;
+                //$imagenConvertida;
 
                 $conexion = $objConexion->conexionRestaurante();
 
-                $query = "select idProducto, nombre, precio, descripcion, imagen from producto 
+                $query = "select idProducto, nombre, precio, descripcion, imagen from Producto 
                 WHERE estaActivo = 1 and idProducto = $idProducto ";
 
                 $res = mysqli_query($conexion, $query);
@@ -70,7 +78,7 @@
                             'nombre'=>$row['nombre'],
                             'precio'=>$row['precio'],
                             'descripcion'=>$row['descripcion'],
-                            'imagen'=> base64_encode($row['imagen'])
+                            'imagen'=> $row['imagen']
                         
                         
                         );
@@ -92,7 +100,7 @@
 
                 $conexion = $objConexion->conexionRestaurante();
     
-                $query = "select idProducto, nombre, precio, descripcion, imagen from producto WHERE estaActivo = 1 and idCategoriaDeProducto = $idCategoriaDeProducto";
+                $query = "select idProducto, nombre, precio, descripcion, imagen from Producto WHERE estaActivo = 1 and idCategoriaDeProducto = $idCategoriaDeProducto";
                 
                 $res = mysqli_query($conexion, $query); 
                 
@@ -101,11 +109,11 @@
 
                         $productos [] = array (
 
-                        'idProducto'=>$row['idProducto'],
-                        'nombre'=>$row['nombre'],
-                        'precio'=>$row['precio'],
-                        'descripcion'=>$row['descripcion'],
-                        'imagen'=> base64_encode($row['imagen'])
+                                'idProducto'=>$row['idProducto'],
+                                'nombre'=>$row['nombre'],
+                                'precio'=>$row['precio'],
+                                'descripcion'=>$row['descripcion'],
+                                'imagen'=>$row['imagen']
                 
                 
                         );
@@ -122,7 +130,7 @@
 
                 $conexion = $objConexion->conexionRestaurante();
 
-                $query = "select idProducto, nombre, precio, descripcion, imagen from producto 
+                $query = "select idProducto, nombre, precio, descripcion, imagen from Producto 
                 where nombre like '%$stringDelUsuario%' or descripcion like  '%$stringDelUsuario%'";
 
                 $res = mysqli_query($conexion, $query); 
@@ -136,7 +144,7 @@
                         'nombre'=>$row['nombre'],
                         'precio'=>$row['precio'],
                         'descripcion'=>$row['descripcion'],
-                        'imagen'=> base64_encode($row['imagen'])
+                        'imagen'=> $row['imagen']
                 
                 
                         );

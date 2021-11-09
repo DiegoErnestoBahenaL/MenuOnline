@@ -17,7 +17,7 @@ function confirmarPedido () {
     
         insertarPedido();        
         
-        //location.href = `list.php?restaurante=${restaurante}&idComensal=${idComensal}&mesa=${idMesa}`;
+        location.href = `list.php?restaurante=${restaurante}&idComensal=${idComensal}&mesa=${idMesa}`;
     }  
 }
 

@@ -19,12 +19,18 @@
         
         public function conexionRestaurante (){
 
-            $conexion = mysqli_connect($this->servername, $this->username, $this->password, $this->database)
+            // $conexion = mysqli_connect($this->servername, $this->username, $this->password, $this->database)
+            // or die ("No se encontró la Base de datos");
+            
+                     
+            $conexion = mysqli_connect ("localhost", "u696248240_restPruebaLu", "N0#l&o9gor",   "u696248240_restPruebaLu")
             or die ("No se encontró la Base de datos");
+
 
             return $conexion;
         }
     
     }
+
 
 ?>

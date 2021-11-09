@@ -115,18 +115,18 @@
              $conexion = $objConexion->conexionRestaurante();
 
             
-            $queryVerificar = "select * from comensal where idMesa=$this->idMesa
-             and estaActivo = 1 and nombre = '$this->nombre' ";
+            $queryVerificar = "select * from Comensal where idMesa=$this->idMesa and estaActivo = 1 and nombre = '$this->nombre'";
             
             
             $res = mysqli_query($conexion, $queryVerificar );
             $rows = mysqli_num_rows($res);
-            if (mysqli_num_rows($res) !== 0){
+            
+            if ($rows !== 0){
             
                 
                  
                    
-             mysqli_close($conexion);
+            
     
 
 
@@ -137,7 +137,8 @@
                     'mesa' => $this->idMesa,
                     'estaActivo'=>$this->estaActivo,
                     'query'=>$res,
-                    'rows'=>$rows
+                    'rows'=>$rows,
+                    'contenidoQuery'=>$queryVerificar
                 );
                 
                 $jsonContent = json_encode($error);
@@ -149,13 +150,13 @@
                 
             } 
             else{ 
-                 $queryInsertar = "insert into comensal (nombre, idMesa, estaActivo) 
+                 $queryInsertar = "insert into Comensal (nombre, idMesa, estaActivo) 
                     values ('$this->nombre', $this->idMesa, $this->estaActivo)";
     
                     $res = mysqli_query($conexion, $queryInsertar);
 
 
-                    $queryObtenerIdComensal = "SELECT idComensal FROM comensal ORDER BY idComensal DESC LIMIT 1";
+                    $queryObtenerIdComensal = "SELECT idComensal FROM Comensal ORDER BY idComensal DESC LIMIT 1";
                     
                     
                     $resIdComensal = mysqli_query($conexion, $queryObtenerIdComensal);
@@ -199,7 +200,7 @@
            
             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "select * from comensal where idComensal=$idComensal";
+            $query = "select * from Comensal where idComensal=$idComensal";
 
             $res = mysqli_query($conexion, $query);
 
@@ -229,7 +230,7 @@
 
             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "select idComensal, nombre from comensal where idMesa=$idMesa and estaActivo = 1";
+            $query = "select idComensal, nombre from Comensal where idMesa=$idMesa and estaActivo = 1";
 
             $res = mysqli_query($conexion, $query);
 
@@ -258,7 +259,7 @@
             
             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "update comensal set estaActivo=0 where idComensal = $idComensal";
+            $query = "update Comensal set estaActivo=0 where idComensal = $idComensal";
 
             $res = mysqli_query($conexion, $query);
 

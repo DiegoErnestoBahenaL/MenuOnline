@@ -57,20 +57,30 @@ obtenerProductos();
         nombreProducto.textContent = productos[i].nombre;
         divProducto.appendChild(nombreProducto);
         
-        var descripcionProducto = document.createElement("p");
-        descripcionProducto.className = "productoDescripcion";
-        descripcionProducto.textContent = productos[i].descripcion;
-        divProducto.appendChild(descripcionProducto);
+        if (productos[i].descripcion !== null) {
+
+            var descripcionProducto = document.createElement("p");
+            descripcionProducto.className = "productoDescripcion";
+            descripcionProducto.textContent = productos[i].descripcion;
+            divProducto.appendChild(descripcionProducto);
+        }
+       
 
         var precioProducto = document.createElement("p");
         precioProducto.className = "productoPrecio";
         precioProducto.textContent = "$"+`${productos[i].precio}`;
         divProducto.appendChild(precioProducto);
 
-        var imagenProducto = document.createElement("img");
-        imagenProducto.className = "productoImagen";
-        imagenProducto.src = "data: image/jpeg;base64," + `${productos[i].imagen}`;
-        divProducto.appendChild(imagenProducto);
+        if (productos[i].imagen !== null){
+
+            var imagenProducto = document.createElement("img");
+            imagenProducto.className = "productoImagen";
+            imagenProducto.src = productos[i].imagen;
+            divProducto.appendChild(imagenProducto);
+
+        }
+        
+        
 
         var agregarProducto = document.createElement("button");
         agregarProducto.textContent = "Agregar";

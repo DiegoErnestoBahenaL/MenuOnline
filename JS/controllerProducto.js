@@ -34,20 +34,31 @@ function cargarProductoDetallado (productoDetallado){
 
     var contenedorProducto = document.getElementById("contenedorProducto");
 
-    var imagenProductoDetallado = document.createElement("img");
-    imagenProductoDetallado.className = "imagenProductoDetallado";
-    imagenProductoDetallado.src = "data: image/jpeg;base64," + `${productoDetallado.imagen}`
-    contenedorProducto.appendChild(imagenProductoDetallado);
+    if (productoDetallado.imagen !== null){
+        
+        var imagenProductoDetallado = document.createElement("img");
+        imagenProductoDetallado.className = "imagenProductoDetallado";
+        imagenProductoDetallado.src = productoDetallado.imagen;
+        contenedorProducto.appendChild(imagenProductoDetallado);
+
+    }
+
+
+    
     
      var nombreProductoDetallado = document.createElement("h1");
     nombreProductoDetallado.textContent = productoDetallado.nombre;
     nombreProductoDetallado.className = "nombreProductoDetallado";
     contenedorProducto.appendChild(nombreProductoDetallado);
     
-      var descripcionProductoDetallado = document.createElement("p");
-    descripcionProductoDetallado.textContent = productoDetallado.descripcion;
-    descripcionProductoDetallado.className = "descripcionProductoDetallado";
-    contenedorProducto.appendChild(descripcionProductoDetallado);
+    if (productoDetallado.descripcion !== null) {
+        
+        var descripcionProductoDetallado = document.createElement("p");
+        descripcionProductoDetallado.textContent = productoDetallado.descripcion;
+        descripcionProductoDetallado.className = "descripcionProductoDetallado";
+        contenedorProducto.appendChild(descripcionProductoDetallado);
+    }
+   
 
     var precioProductoDetallado = document.createElement("h2");
     precioProductoDetallado.textContent = "$" + `${productoDetallado.precio}`;

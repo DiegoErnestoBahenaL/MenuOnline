@@ -28,7 +28,7 @@
             $this->idMedioDePago = 3;
             $this->montoTotal = $montoTotal;
             $this->idEstadoPedido = 1;
-            $this->fechaInicio = date( "Y-m-d H:i:s", time () -18000);
+            $this->fechaInicio = date( "Y-m-d H:i:s", time () -21600);
 
  
          
@@ -42,7 +42,7 @@
             $conexion = $objConexion->conexionRestaurante();
 
             //Query para verificar los pedidos que haya en esa mesa
-            $queryVerificar = "select * from pedido where idMesa = $this->idMesa 
+            $queryVerificar = "select * from Pedido where idMesa = $this->idMesa 
             and idComensal = $this->idComensal and idEstadoPedido!=5";
 
 
@@ -52,7 +52,7 @@
 
             if ($rowsConsulta !== 0){
 
-                $queryObtenerPedido = "SELECT numeroDePedido, idEstadoPedido FROM pedido WHERE idMesa = $this->idMesa ORDER BY numeroDePedido DESC LIMIT 1";
+                $queryObtenerPedido = "SELECT numeroDePedido, idEstadoPedido FROM Pedido WHERE idMesa = $this->idMesa ORDER BY numeroDePedido DESC LIMIT 1";
 
 
                 $resNumeroDePedido = mysqli_query($conexion, $queryObtenerPedido);
@@ -83,12 +83,12 @@
             }
             else {
 
-                $query = "insert into pedido (fechaInicio, idEstadoPedido, montoTotal, idMedioDePago, idMesa, idComensal) 
+                $query = "insert into Pedido (fechaInicio, idEstadoPedido, montoTotal, idMedioDePago, idMesa, idComensal) 
                 values ('$this->fechaInicio', $this->idEstadoPedido, $this->montoTotal, $this->idMedioDePago, $this->idMesa, $this->idComensal)";
             
                 $res = mysqli_query($conexion, $query);
                 
-                $queryObtenerPedido = "SELECT numeroDePedido FROM pedido WHERE idMesa = $this->idMesa ORDER BY numeroDePedido DESC LIMIT 1";
+                $queryObtenerPedido = "SELECT numeroDePedido FROM Pedido WHERE idMesa = $this->idMesa ORDER BY numeroDePedido DESC LIMIT 1";
 
 
                 $resNumeroDePedido = mysqli_query($conexion, $queryObtenerPedido);
@@ -133,7 +133,7 @@
 
             $conexion = $objConexion->conexionRestaurante();
 
-            $query =  "UPDATE pedido set montoTotal = $montoTotal, idEstadoPedido = 1 where numeroDePedido = $numeroDePedido"; 
+            $query =  "UPDATE Pedido set montoTotal = $montoTotal, idEstadoPedido = 1 where numeroDePedido = $numeroDePedido"; 
 
             $res = mysqli_query($conexion, $query);
 

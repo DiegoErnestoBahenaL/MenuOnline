@@ -62,7 +62,7 @@
 
             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "select * from categoriadeproducto";
+            $query = "select * from CategoriaDeProducto";
 
             $res = mysqli_query($conexion, $query);
 
@@ -87,7 +87,7 @@
 
             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "select * from categoriadeproducto where idCategoriaDeProducto= $idCategoriaDeProducto";
+            $query = "select * from CategoriaDeProducto where idCategoriaDeProducto= $idCategoriaDeProducto";
 
             $res = mysqli_query ($conexion, $query);
 
