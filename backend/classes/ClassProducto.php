@@ -9,10 +9,7 @@
         private $codigo;
         private $imagen;
         private $idCategoriaDeProducto;
-        
-         /**
-         * Constructor de la clase Producto
-         */ 
+                       
 
         public function __construct($idProducto, $nombre, $precio, $descripcion, $codigo, $imagen, $idCategoriaDeProducto){
 
@@ -25,12 +22,7 @@
             $this->idCategoriaDeProducto = $idCategoriaDeProducto;
         }
 
-         /**
-         * Parámetros: Recibe un objeto de la clase conexión con la información del restaurante
-         * Funcionalidad: Usando el objeto de la clase conexion, crea una nueva conexión
-         * con el método conexionRestaurante() para realizar consultas; realiza la consulta
-         * correspondiente y se
-         */ 
+
         public static function obtenerProductos($objConexion){
                 
                 //$imagenConvertida;

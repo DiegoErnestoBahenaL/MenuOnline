@@ -46,7 +46,7 @@
             and idComensal = $this->idComensal and idEstadoPedido!=5";
 
 
-            $resVerificar = mysqli_query($conexion, $queryVerificar);
+            $resVerificar = mysqli_query($conexion, $queryVerificar) or die ("No se ejecutó la queryVerificar");
 
             $rowsConsulta = mysqli_num_rows ($resVerificar);
 

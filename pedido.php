@@ -39,6 +39,7 @@
         print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';    
         print '<input type="hidden" id="mesa" value="'.$mesa.'" >';                  
                                  
+                                 
     ?>
       
         
@@ -47,12 +48,14 @@
 
     <h1 class="pedidoHeader">Pedido</h1>
     
-    <div class="productosPedidos" id="productosPedidos">
+     <div class="productosPedidos" id="productosPedidos">
             
         <script  src="JS/controllerProductosPedidos.js" ></script>     
 
     </div>
-    <div class="areaBotonesPedido">
+     
+     
+     <div class="areaBotonesPedido">
 
         <button type="button" id="botonRegresarProductos" class="botonRegresarProductos" onclick="regresarAProductos()" >Regresar a Productos</button>
 
@@ -61,7 +64,8 @@
         <script src="JS/controllerNavegacionPedido.js"></script>
 
     </div>
+      
      
-    
+
 </body>
 </html>

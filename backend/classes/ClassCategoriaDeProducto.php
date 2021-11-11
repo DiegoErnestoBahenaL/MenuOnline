@@ -14,9 +14,6 @@
         }
 
 
-
-        
-
         /**
          * Get the value of idCategoria
          */ 
@@ -107,7 +104,6 @@
     
     
     }
-
 
 
 ?>

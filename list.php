@@ -30,13 +30,13 @@
     <h1>Productos</h1>
       <?php
           
-         
+              
             $nombreRestaurante = $_GET['restaurante'];
             $idComensal = $_GET['idComensal'];
             $mesa = $_GET['mesa'];
             print  '<input type="hidden" id="restaurante" value="'.$nombreRestaurante.'" >';
             print '<input type="hidden" id="idComensal" value="'.$idComensal.'" >';                   
-            print '<input type="hidden" id="mesa" value="'.$mesa.'" >';                           
+            print '<input type="hidden" id="mesa" value="'.$mesa.'" >';  
         ?>
       
         
@@ -62,7 +62,7 @@
             <button type="button" class="pedido" id="pedido" onclick="irAPedido()" >Ir a pedido</button>
             
             <script src="JS/controllerIrAPedido.js"></script>
-
+            
         </div>
         
         <div class="listaProductos" id="listaProductos">

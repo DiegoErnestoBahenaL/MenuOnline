@@ -120,8 +120,7 @@
             
             $res = mysqli_query($conexion, $queryVerificar );
             $rows = mysqli_num_rows($res);
-            
-            if ($rows !== 0){
+            if (mysqli_num_rows($res) !== 0){
             
                 
                  
