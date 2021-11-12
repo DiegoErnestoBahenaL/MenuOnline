@@ -22,7 +22,11 @@
             $this->idCategoriaDeProducto = $idCategoriaDeProducto;
         }
 
-
+        /**
+         * Recibe: objeto para establecer la conexión
+         * Función: Selecciona todos los productos de un restaurante
+         * retorna: Arreglo de JSON con cada producto y su información
+         */
         public static function obtenerProductos($objConexion){
                 
                 //$imagenConvertida;
@@ -50,7 +54,37 @@
             $jsonContent = json_encode ($productos);
             echo $jsonContent;
         }
-        
+         /**
+         * Recibe: objeto para establecer la conexión y el id del comensal
+         * Función: Selecciona todos los productos pedidos por un comensal
+         * retorna: Arreglo de JSON con cada producto y su información
+         */
+        public static function obtenerProductosDeComensal ($objConexion, $idComensal){
+
+                $conexion = $objConexion->conexionRestaurante();
+
+                $query = "select nombre, numeroDeProductos, precio  from Producto p 
+                INNER JOIN Pedido_Producto q on p.idProducto = q.idProducto INNER JOIN
+                Pedido r on q.numeroDePedido = r.numeroDePedido WHERE r.idComensal = $idComensal";
+
+                $res = mysqli_query($conexion, $query);
+
+                while ($row = $res->fetch_array()){
+                        $productos [] = array (
+                                
+                                'nombre'=>$row['nombre'],
+                                'numeroDeProductos'=>$row['numeroDeProductos'],
+                                'precio'=>$row['precio']
+
+                        );
+                }
+
+                $jsonContent = json_encode ($productos);
+                echo $jsonContent;
+        }
+
+
+
         public static function obtenerProducto ($objConexion, $idProducto){
 
                 //$imagenConvertida;

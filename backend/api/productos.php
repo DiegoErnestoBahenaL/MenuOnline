@@ -27,6 +27,11 @@
                     Producto::obtenerProductosPorBusqueda($conexion, $_GET['productoBuscado']);
                     break;
                 }
+                if (isset($_GET['idComensal'])){
+                    $conexion = new Conexion($_GET['restaurante']);
+                    Producto::obtenerProductosDeComensal($conexion, $_GET['idComensal']);
+                    break;
+                }
                 $conexion = new Conexion($_GET['restaurante']);
                 Producto::obtenerProductos($conexion);            
             }
