@@ -156,6 +156,127 @@
 
             mysqli_close($conexion);
         }
+        
+        /**
+         * Recibe: el objeto para realizar la conexion, el id del medio de pago,
+         *          la propina y el id del comensal
+         * Función: Actualiza los campos correspondientes con una consulta.
+         * Retorna: El estado de la operación (200 = ok, 500 = error)
+         */
+        public static function solicitarPago ($objConexion, $idMedioDePago, $propina, $idComensal){
 
+            $conexion = $objConexion->conexionRestaurante();
+
+            $query = "UPDATE Pedido SET idMedioDePago = $idMedioDePago, propina = $propina, idEstadoPedido = 6 WHERE idComensal = $idComensal";
+             $res = mysqli_query($conexion, $query);
+
+            
+            if($res){
+                $codigo = 200;
+            }
+            else {
+                $codigo = 500;
+            }
+
+            $message = array (
+
+                'message'=>$codigo
+            );
+
+            $jsonContent = json_encode($message);
+            echo $jsonContent;
+
+            mysqli_close($conexion);
+
+        }
+        /**
+         * Recibe: el objeto para realizar la conexion, el comentario y la 
+         *          escala de atencion
+         * Función: Actualiza los campos correspondientes con una consulta.
+         * Retorna: El estado de la operación (200 = ok, 500 = error)
+         */
+        public static function evaluarServicio ($objConexion, $comentario, $atencion, $idComensal){
+
+            $conexion = $objConexion->conexionRestaurante();
+
+            $query = "UPDATE Pedido SET comentario = '$comentario', atencion = $atencion WHERE idComensal = $idComensal";
+
+            $res = mysqli_query($conexion, $query);
+
+            if($res){
+                $codigo = 200;
+            }
+            else {
+                $codigo = 500;
+            }
+
+            $message = array (
+
+                'message'=>$codigo
+            );
+
+            $jsonContent = json_encode($message);
+            echo $jsonContent;
+
+            mysqli_close($conexion);
+
+            
+
+        }
+
+         /**
+         * Recibe: el objeto para realizar la conexion, 
+         *         id del comensal que va a dividir su producto o productos,
+         *         el arreglo con los id's de los comensales seleccionados,
+         *         el total de los productos o producto a dividir,
+         *           
+         *         
+         * Función: Realiza la gestión necesaria para dividir los productos entre 
+         *          los comensales
+         * Retorna: El estado de la operación (200 = ok, 500 = error)
+         */
+
+        public static function dividirProductos ($objConexion, $idComensal, $comensalesSeleccionados, $totalProductos){
+
+            $numeroDeComensalesSeleccionados = count($comensalesSeleccionados);
+
+            $conexion = $objConexion->conexionRestaurante();
+
+            $aumentarCantidad = $totalProductos /($numeroDeComensalesSeleccionados + 1);
+
+            $cantidadARestar = $aumentarCantidad * ($numeroDeComensalesSeleccionados);
+
+            $queryRestarMonto = "UPDATE Pedido SET montoTotal = montoTotal - $cantidadARestar WHERE idComensal=$idComensal";
+
+            $resRestarMonto = mysqli_query($conexion, $queryRestarMonto);
+
+            for ($i=0; $i <$numeroDeComensalesSeleccionados ; $i++) { 
+                
+                $idEspecifico = $comensalesSeleccionados[$i];
+
+                $queryAumentarMonto = "UPDATE Pedido SET montoTotal = montoTotal + $aumentarCantidad 
+                WHERE idComensal=$idEspecifico";
+
+                $resAumentarMonto = mysqli_query($conexion, $queryAumentarMonto) or die ("No se ejecutó la consulta, el id fue". $idEspecifico );
+            }
+            
+            if($resRestarMonto && $resAumentarMonto){
+                $codigo = 200;
+            }
+            else {
+                $codigo = 500;
+            }
+
+            $message = array (
+
+                'message'=>$codigo
+            );
+
+            $jsonContent = json_encode($message);
+            echo $jsonContent;
+
+            mysqli_close($conexion);
+
+        }
     }
 ?>

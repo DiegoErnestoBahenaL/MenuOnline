@@ -29,7 +29,23 @@
                 $conexion = new Conexion ($_GET['restaurante']);
                 Pedido::actualizarMontoTotal($_GET['numeroDePedido'],$_GET['montoTotal'], $conexion);
              }
+
+            $_POST = json_decode (file_get_contents('php://input'), true);
+
+             if (isset($_POST['comensalesSeleccionados'])){
+                $conexion = new Conexion($_POST['restaurante']);
+                Pedido::dividirProductos($conexion, $_POST['idComensal'], $_POST['comensalesSeleccionados'], $_POST['totalProductos']);
+             }
+
+             if (isset($_POST['atencion'])){
+                $conexion = new Conexion($_POST['restaurante']);
+                Pedido::evaluarServicio($conexion, $_POST['comentario'], $_POST['atencion'], $_POST['idComensal']);
+             }
             
+            if (isset($_POST['idComensal']) && isset($_POST['idMedioDePago'])){
+                $conexion = new Conexion($_POST['restaurante']);
+                Pedido::solicitarPago($conexion, $_POST['idMedioDePago'], $_POST['propina'], $_POST['idComensal']);
+             }
 
 
         break;

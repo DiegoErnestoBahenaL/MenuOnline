@@ -23,7 +23,7 @@
 
             $conexion = $objConexion->conexionRestaurante();
 
-            $query = "insert into Pedido_Producto (numeroDePedido, idProducto, numeroDeProductos, comentario) values ($this->numeroDePedido, $this->idProducto, $this->numeroDeProductos, '$this->comentario')";
+            $query = "insert into Pedido_Producto (numeroDePedido, idProducto, numeroDeProductos, comentario, estaEntregado) values ($this->numeroDePedido, $this->idProducto, $this->numeroDeProductos, '$this->comentario', 0)";
 
             $res = mysqli_query($conexion, $query) or die ("no se ejectuo la consulta");
 
