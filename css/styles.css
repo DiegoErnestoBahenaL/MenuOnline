@@ -247,11 +247,31 @@ footer{
 }
 .componenteSelector {
     max-width: 80%;
-    margin: 2rem auto;
+    margin: 1.5rem auto;
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 1rem;
 }
+
+.pagos {
+    display: flex;
+    margin: 1.5rem auto;
+    justify-content: center;
+    
+}
+.pagos__boton{
+
+    padding: 1rem;
+    font-size: larger;
+    border-radius: 1rem;
+    font-weight: bolder !important;
+    border: none;
+    appearance: none;
+    width: 80%;
+
+}
+
+
 
 /* productoDetallado.php */
 
@@ -348,7 +368,9 @@ footer{
 }
 
 
-.productosPedidos {
+.productosPedidos,
+.productosDelComensal,
+.divComensales {
 
     height: 35rem;
     overflow: scroll;
@@ -360,13 +382,22 @@ footer{
    
 }
 
+.productosDelComensal {
+    height: 20rem;
+}
+.divComensales{
+    height: 15rem;
+}
 .pedido {
     background-color: var(--blanco);
 }
 
 .productoPedidoNombre,
 .precioProductoPedido,
-.cantidadProductoPedido{
+.cantidadProductoPedido,
+.totalCliente,
+.divisionProductos,
+.comensalNombre{
 
     color: var(--cocoa-brown);
 
@@ -384,4 +415,87 @@ footer{
     flex-direction: row;
     justify-content: space-between;
 
+}
+/* pagos.php */
+
+.botonesPagos {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.5rem auto;
+    gap: 5rem;
+    width: 80%;
+
+    
+}
+.boton__dividir,
+.boton__pagar,
+.boton__confirmar,
+.boton__confirmarDivision{
+    padding: 1rem;
+    font-size: larger !important;
+    border-radius: 1rem;
+    border: none;
+    appearance: none;
+  
+
+}
+.boton__dividir{
+    background-color: var(--bright-sun) !important;
+}
+
+.boton__pagar {
+    
+    background-color: var(--pizazz) !important;
+}
+
+.boton__confirmar,
+.boton__confirmarDivision {
+    background-color: var(--azul);
+    color: var(--blanco);
+    font-weight: bolder !important;
+    margin-bottom: 4rem;
+
+}
+.boton__confirmarDivision{
+    display: flex;
+    margin: 3rem auto;
+    justify-content: center;
+}
+
+.botonesPagar {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.totalCliente {
+    display:block;
+    align-items: center;
+    margin: 1rem auto;
+    text-align: center;
+    font-weight: bolder !important;
+    font-size: larger !important;
+    
+
+}
+.propina,
+.metodoDePago {
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.propina{
+    appearance: none;
+    width: 10rem;
+    border-width: 0.3px;
+    border-style: solid;
+    border-radius: 1rem;
+}
+
+.comensalADividir{
+    gap: 5rem;
+    margin: 1rem auto;
+    width: 70%;
 }

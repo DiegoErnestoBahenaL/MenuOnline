@@ -65,7 +65,8 @@
 
                 $query = "select nombre, numeroDeProductos, precio  from Producto p 
                 INNER JOIN Pedido_Producto q on p.idProducto = q.idProducto INNER JOIN
-                Pedido r on q.numeroDePedido = r.numeroDePedido WHERE r.idComensal = $idComensal";
+                Pedido r on q.numeroDePedido = r.numeroDePedido WHERE r.idComensal = $idComensal
+                AND r.idEstadoPedido = 2";
 
                 $res = mysqli_query($conexion, $query);
 

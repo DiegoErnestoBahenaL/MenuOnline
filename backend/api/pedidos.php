@@ -5,7 +5,17 @@
     include_once ("../classes/ClassConexion.php");
 
     switch ($_SERVER['REQUEST_METHOD']){
+        
+        case 'GET':
 
+            if (isset($_GET['idComensal'])){
+                
+                 
+                $conexion = new Conexion ($_GET['restaurante']);
+                Pedido::mostrarMontoDelComensal($_GET['idComensal'], $conexion);
+            
+            }
+            break;
         case 'POST':
             
             //Un comensal nuevo ingresa al restaurante

@@ -35,6 +35,29 @@
 
        }
 
+       //retorna el monto total del pedido del comensal
+       public static function mostrarMontoDelComensal ($idComensal, $objConexion){
+
+            $conexion = $objConexion->conexionRestaurante();
+
+            $query = "SELECT * FROM Pedido WHERE idComensal = $idComensal";
+
+            $res = mysqli_query($conexion, $query);
+
+            while ($row = $res->fetch_array()){
+
+                $pedido = array (
+
+                    'montoTotal'=>$row['montoTotal']
+
+                );
+                
+            }
+
+            $jsonContent = json_encode ($pedido);
+            echo $jsonContent;
+       }
+
         public function insertarPedido ($objConexion) {
 
             

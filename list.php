@@ -23,7 +23,7 @@
 
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
-
+ 
 
 </head>
 <body class="menu">
@@ -65,6 +65,14 @@
             
         </div>
         
+        <div class="pagos">
+
+            <button type="button" class="pagos__boton" id="pagos" onclick="irAPagos()" >Pagar</button>
+            <script src="JS/controllerIrAPagos.js"></script>
+        </div>
+
+
+
         <div class="listaProductos" id="listaProductos">
             <script type="module"  src="JS/controllerProductos.js" ></script>
              
