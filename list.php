@@ -29,8 +29,8 @@
 <body class="menu">
     <h1>Productos</h1>
       <?php
-          
-              
+            
+            
             $nombreRestaurante = $_GET['restaurante'];
             $idComensal = $_GET['idComensal'];
             $mesa = $_GET['mesa'];

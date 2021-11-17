@@ -256,9 +256,15 @@
          */
         public function actualizarEstadoComensal ($idComensal, $objConexion){
             
+            $fechaFin = date( "Y-m-d H:i:s", time () -21600);
+
             $conexion = $objConexion->conexionRestaurante();
 
             $query = "update Comensal set estaActivo=0 where idComensal = $idComensal";
+
+            $res = mysqli_query($conexion, $query);
+
+            $query = "update Pedido set fechaFin = $fechaFin where idComensal = $idComensal ";
 
             $res = mysqli_query($conexion, $query);
 

@@ -49,6 +49,8 @@
         <section class="logoRestaurante">
 
             <?php
+                session_start();
+                
                 error_reporting(E_ERROR | E_PARSE);
                 $nombreRestaurante = $_GET['restaurante'];
             
@@ -60,7 +62,9 @@
                     $conn = connectDaltys();
                 
                 
-                    $query = "select imagen, nombreRestaurante from Restaurante where idRestaurante=$restaurante";
+                    $query = "select r.imagen, u.nombreUsuario, u.contrasena from Usuario u 
+                    inner join Cliente c on u.idCliente = c.idCliente
+                    INNER JOIN Restaurante r on r.idRestaurante = c.idRestaurante where u.idUsuario = $restaurante";
                 
 
                     $resultado = mysqli_query($conn, $query) or die ("Algo fallo");
@@ -68,9 +72,15 @@
                     while ($fila=mysqli_fetch_array($resultado)){
                     
                         $imagen = $fila['imagen'];
-                        $nombre = $fila['nombreRestaurante'];
+                        $nombre = $fila['nombreUsuario'];
+                        $password = $fila['contrasena'];
                      
                     }
+
+
+                    $_SESSION['PASSWORD'] = $password;
+
+                   
 
                     print '<img class="logoRestaurante__imagen" src="data:image/jpeg;base64,'. base64_encode($imagen) .'"/>'; 
                     mysqli_close($conn);

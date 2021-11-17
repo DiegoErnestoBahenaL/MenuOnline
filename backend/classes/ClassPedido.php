@@ -48,7 +48,8 @@
 
                 $pedido = array (
 
-                    'montoTotal'=>$row['montoTotal']
+                    'montoTotal'=>$row['montoTotal'],
+                    'estadoPedido'=>$row['idEstadoPedido']
 
                 );
                 

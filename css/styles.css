@@ -397,9 +397,10 @@ footer{
 .cantidadProductoPedido,
 .totalCliente,
 .divisionProductos,
-.comensalNombre{
+.comensalNombre,
+.headerValoracion{
 
-    color: var(--cocoa-brown);
+    color: var(--cocoa-brown) !important;
 
 }
 
@@ -498,4 +499,48 @@ footer{
     gap: 5rem;
     margin: 1rem auto;
     width: 70%;
+}
+
+/* valoracion.php*/
+.star{
+    color: goldenrod;
+    font-size: 2.0rem;
+    padding: 0 1rem; /* space out the stars */
+  }
+  .star::before{
+    content: '\2606';    /* star outline */
+    cursor: pointer;
+  }
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+  }
+  
+  .stars{
+      counter-reset: rateme 0;   
+      font-size: 2.0rem;
+      font-weight: 900;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }
+  .stars::after{
+      content: counter(rateme) '/5';
+  }
+
+  .areaEstrellas {
+
+    display: flex;
+    margin: 5rem auto;
+    justify-content: center;
+     
+  }
+
+.botonesValoracion {
+
+    display: flex;
+    flex-direction: column;
+    margin: 5rem auto;
+    align-items: center;
+
 }

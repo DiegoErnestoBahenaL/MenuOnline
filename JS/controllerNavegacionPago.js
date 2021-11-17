@@ -243,6 +243,7 @@ function confirmarPago(){
             .then(res=>{
                 if (res.data.message == 200){
                     alert("Un mesero pronto irá a cobrarte");
+                    location.href = `valoracion.php?restaurante=${restaurante}&mesa=${mesa}&idComensal=${idComensal}`;
                 }
                 else{
                     alert ("Algo salió mal");
